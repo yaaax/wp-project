@@ -1,4 +1,5 @@
 # Geniem Wordpress Project template.
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 Use this with our docker-image: [devgeniem/alpine-wordpress](https://github.com/devgeniem/docker-alpine-wordpress).
 
