@@ -1,10 +1,10 @@
 <?php
-/*
+/**
  * Usually wp-content is inside wordpress core
  * In this project wp-content is moved out of core to be easier to update.
  * Especially with composer.
- └── htdocs
-    ├── wp-content
+ └── web
+    ├── app
     │   ├── mu-plugins
     │   ├── plugins
     │   ├── themes
@@ -12,7 +12,7 @@
     ├── wp-config.php
     ├── index.php
     ├── wp-load.php
-    └── wordpress # Wordpress Core installed by composer
+    └── wp # Wordpress Core installed by composer
         ├── wp-admin
         ├── index.php
         ├── wp-load.php
