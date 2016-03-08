@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "74a53a57ed56f387e82306b0f7511599",
-    "content-hash": "9e55a1aecd46e20f61ce9eb1e3524f0a",
+    "hash": "d50e43fc9b5656ad4715c437f6e9eb78",
+    "content-hash": "cb343893a6257956861a5a899b0f2d4f",
     "packages": [
         {
             "name": "composer/installers",
@@ -282,55 +282,46 @@
             "time": "2015-06-11 14:15:20"
         },
         {
-            "name": "vlucas/phpdotenv",
-            "version": "v1.0.9",
+            "name": "oscarotero/env",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "56c252d48dce336da97926591aed71805203815b"
+                "url": "https://github.com/oscarotero/env.git",
+                "reference": "8836fc53726466fea17137c2f2622d89de51cd67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/56c252d48dce336da97926591aed71805203815b",
-                "reference": "56c252d48dce336da97926591aed71805203815b",
+                "url": "https://api.github.com/repos/oscarotero/env/zipball/8836fc53726466fea17137c2f2622d89de51cd67",
+                "reference": "8836fc53726466fea17137c2f2622d89de51cd67",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "php": ">=5.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
-                    "Dotenv": "src/"
+                    "Env": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com"
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "homepage": "http://github.com/vlucas/phpdotenv",
+            "description": "Simple library to consume environment variables",
+            "homepage": "https://github.com/oscarotero/env",
             "keywords": [
-                "dotenv",
-                "env",
-                "environment"
+                "env"
             ],
-            "time": "2014-10-16 14:50:21"
+            "time": "2015-12-31 12:34:29"
         },
         {
             "name": "wpackagist-plugin/https-domain-alias",
@@ -400,7 +391,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=5.3.2"
     },
     "platform-dev": []
 }
