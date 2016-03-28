@@ -1,5 +1,5 @@
 {
-  "name": "geniem/wp-project",
+  "name": "devgeniem/wp-project",
   "type": "project",
   "license": "MIT",
   "description": "Bedrock inspired WordPress template",
@@ -40,23 +40,21 @@
   "require": {
     "php": ">=5.3.2",
     "johnpbloch/wordpress": "*",
-    "composer/installers": "v1.0.12",
-    "koodimonni/composer-dropin-installer": ">=1.0",
+    "vlucas/phpdotenv": "^2.0.1",
     "oscarotero/env": "^1.0",
+    "composer/installers": "v1.0.12",
+
+    "koodimonni/composer-dropin-installer": ">=1.0",
 
     "koodimonni-language/core-fi": "*",
 
-    "wpackagist-plugin/https-domain-alias": ">=1.4.2",
-    "devgeniem/wp-sanitize-accented-uploads": ">=1.0.0",
+    "devgeniem/wp-sanitize-accented-uploads": "dev-master",
 
-    "wpackagist-plugin/wordpress-seo": "*",
-
-    "wpackagist-theme/twentysixteen": "*"
-
+    "robmorgan/phinx": "^0.5.3"
   },
   "extra": {
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin", "wpackagist-plugin/https-domain-alias"],
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}": ["type:wordpress-theme"]
     },
