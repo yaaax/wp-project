@@ -29,27 +29,43 @@ if (file_exists($env_config)) {
 }
 
 /**
- * URLs
+ * Set URLs
+ * Deduct them from request parameters if developer didn't set them explicitly
+ * We can always just use nginx to redirect aliases to canonical url
+ * This helps changing between dev->stage->production
  */
-define('WP_HOME', env('WP_HOME'));
-define('WP_SITEURL', env('WP_SITEURL'));
+define('WP_HOME',    env('WP_HOME') ? env('WP_HOME') : $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'] );
+define('WP_SITEURL', env('WP_SITEURL') ? env('WP_SITEURL') : $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'] );
 
 /**
  * Custom Content Directory
  */
 define('CONTENT_DIR', '/app');
 define('WP_CONTENT_DIR', $webroot_dir . CONTENT_DIR);
-define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
+
+/*
+ * Always use relative asset urls even in subdirectory installations
+ */
+$parsed_wp_home = parse_url(WP_HOME);
+if (isset($parsed_wp_home['path'])) {
+  // Remove all trailing '/'
+  $home_path = rtrim($parsed_wp_home['path'], "/");
+} else {
+  $home_path = "";
+}
+define('WP_CONTENT_URL', $home_path . CONTENT_DIR);
 
 /**
  * DB settings
+ * Use DB_NAME, DB_USER, DB_PASSWORD, DB_HOST first
+ * but fallback to docker container links
  */
-define('DB_NAME', env('DB_NAME'));
-define('DB_USER', env('DB_USER'));
-define('DB_PASSWORD', env('DB_PASSWORD'));
-define('DB_HOST', env('DB_HOST') ?: 'localhost');
+define('DB_NAME',     env('DB_NAME') ? env('DB_NAME') : env('DB_ENV_MYSQL_PASSWORD') );
+define('DB_USER',     env('DB_USER') ? env('DB_USER') : env('DB_ENV_MYSQL_USER') );
+define('DB_PASSWORD', env('DB_PASSWORD') ? env('DB_PASSWORD') : env('DB_ENV_MYSQL_PASSWORD') );
+define('DB_HOST',     env('DB_HOST') ?  env('DB_HOST') : env('DB_PORT_3306_TCP_ADDR') );
 define('DB_CHARSET', 'utf8mb4');
-define('DB_COLLATE', '');
+define('DB_COLLATE', 'utf8mb4_swedish_ci' );
 $table_prefix = env('DB_PREFIX') ?: 'wp_';
 
 /**
@@ -73,19 +89,19 @@ define('DISALLOW_FILE_EDIT', true);
 define('FS_METHOD', 'direct' );
 
 /**
- * Change uploads directory so that we can use glusterfs more easily
+ * Change uploads directory so that we can use glusterfs (or other replication) more easily
  * Note: this is only tested in single site installation
  * Uses: web/app/mu-plugins/moved-uploads.php
  */
-define('WP_UPLOADS_DIR', getenv('WP_UPLOADS_DIR') ? getenv('WP_UPLOADS_DIR') : '/data/uploads' );
-define('WP_UPLOADS_URL', getenv('WP_UPLOADS_URL') ? getenv('WP_UPLOADS_URL') : '/uploads' );
+define('WP_UPLOADS_DIR', env('WP_UPLOADS_DIR') ? env('WP_UPLOADS_DIR') : '/data/uploads' );
+define('WP_UPLOADS_URL', env('WP_UPLOADS_URL') ? env('WP_UPLOADS_URL') : '/uploads' );
 
 /**
  * Use different domain for the wp-admin if available
  * Uses: https://wordpress.org/plugins/https-domain-alias/
  */
-if ( getenv('HTTPS_DOMAIN_ALIAS') )
-  define('HTTPS_DOMAIN_ALIAS', getenv('HTTPS_DOMAIN_ALIAS'));
+if ( env('HTTPS_DOMAIN_ALIAS') )
+  define('HTTPS_DOMAIN_ALIAS', env('HTTPS_DOMAIN_ALIAS'));
 
 /**
  * Disables polylang cookies and allows better caching
