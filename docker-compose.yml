@@ -17,11 +17,13 @@ web:
     WP_ENV: development
 
     # These will be mapped automatically in development to jwilder/nginx-proxy
-    VIRTUAL_HOST:  wordpress.g.test, wordpress.test
-    HTTPS_HOST: wordpress.g.test
+    VIRTUAL_HOST:  wordpress.test
+    HTTPS_HOST: wordpress.test
 
-    # Use HTTPS_DOMAIN_ALIAS if you want to have different admin address
-    HTTPS_DOMAIN_ALIAS: wordpress.g.test
+    # Set project WP_SITEURL &
+    WP_SITEURL: http://wordpress.test
+    WP_HOME: http://wordpress.test
+
     DB_NAME: wordpress
     DB_USER: wordpress
     DB_PASSWORD: wordpress
@@ -31,11 +33,12 @@ web:
     # Related issue: https://github.com/nlf/dlite/issues/90
     - 172.17.0.1
 db:
-  image: mariadb
+  image: devgeniem/mariadb-galera
   volumes:
     # Make database persistent
     - /var/lib/mysql
   environment:
+    BOOTSTRAP: "on"
     MYSQL_DATABASE: wordpress
     MYSQL_USER: wordpress
     MYSQL_PASSWORD: wordpress
