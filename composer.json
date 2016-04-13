@@ -48,7 +48,7 @@
 
     "koodimonni-language/core-fi": "*",
 
-    "devgeniem/wp-sanitize-accented-uploads": "dev-master",
+    "devgeniem/wp-sanitize-accented-uploads": ">=1.0.7",
 
     "robmorgan/phinx": "^0.5.3"
   },

@@ -20,7 +20,7 @@ web:
     VIRTUAL_HOST:  wordpress.test
     HTTPS_HOST: wordpress.test
 
-    # Set project WP_SITEURL &
+    # Set project WP_SITEURL & HOME
     WP_SITEURL: http://wordpress.test
     WP_HOME: http://wordpress.test
 
