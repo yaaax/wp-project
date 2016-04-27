@@ -104,6 +104,12 @@ if ( env('HTTPS_DOMAIN_ALIAS') )
   define('HTTPS_DOMAIN_ALIAS', env('HTTPS_DOMAIN_ALIAS'));
 
 /**
+ * Define newsletter plugin logging into php logging directory
+ * Uses: https://wordpress.org/plugins/newsletter/
+ */
+define('NEWSLETTER_LOG_DIR', dirname( ini_get('error_log') ) . '/newsletter/' );
+
+/**
  * Disables polylang cookies and allows better caching
  * Uses: https://wordpress.org/plugins/polylang/
  */
