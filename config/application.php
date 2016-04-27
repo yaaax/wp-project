@@ -42,18 +42,7 @@ define('WP_SITEURL', env('WP_SITEURL') ? env('WP_SITEURL') : $_SERVER['REQUEST_S
  */
 define('CONTENT_DIR', '/app');
 define('WP_CONTENT_DIR', $webroot_dir . CONTENT_DIR);
-
-/*
- * Always use relative asset urls even in subdirectory installations
- */
-$parsed_wp_home = parse_url(WP_HOME);
-if (isset($parsed_wp_home['path'])) {
-  // Remove all trailing '/'
-  $home_path = rtrim($parsed_wp_home['path'], "/");
-} else {
-  $home_path = "";
-}
-define('WP_CONTENT_URL', $home_path . CONTENT_DIR);
+define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
 
 /**
  * DB settings
