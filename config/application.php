@@ -94,7 +94,7 @@ define('FS_METHOD', 'direct' );
  * Uses: web/app/mu-plugins/moved-uploads.php
  */
 define('WP_UPLOADS_DIR', env('WP_UPLOADS_DIR') ? env('WP_UPLOADS_DIR') : '/data/uploads' );
-define('WP_UPLOADS_URL', env('WP_UPLOADS_URL') ? env('WP_UPLOADS_URL') : '/uploads' );
+define('WP_UPLOADS_URL', env('WP_UPLOADS_URL') ? env('WP_UPLOADS_URL') : WP_HOME . '/uploads' );
 
 /**
  * Use different domain for the wp-admin if available
