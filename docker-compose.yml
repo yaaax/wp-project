@@ -1,5 +1,5 @@
 web:
-  image: devgeniem/alpine-wordpress
+  image: devgeniem/alpine-wordpress:1.0
   ports:
     - 80
   links:
