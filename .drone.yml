@@ -4,7 +4,6 @@ build:
   commands:
     - ./scripts/test.sh
   environment:
-    HTTPS_DOMAIN_ALIAS: wordpress.g.test
     DB_NAME: wordpress
     DB_USER: wordpress
     DB_PASSWORD: wordpress

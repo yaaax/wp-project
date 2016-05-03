@@ -9,27 +9,27 @@ environments:
     default_port: mysql
     development:
         adapter: mysql
-        host: %%DB_PORT_3306_TCP_ADDR%%
-        port: %%DB_PORT%%
-        name: %%DB_NAME%%
-        user: %%DB_USER%%
-        pass: %%DB_USER%%
+        host: %%PHINX_DBHOST%%
+        port: %%PHINX_DBPORT%%
+        name: %%PHINX_DBNAME%%
+        user: %%PHINX_DBUSER%%
+        pass: %%PHINX_DBPASSWORD%%
         charset: utf8mb4
 
     production:
         adapter: mysql
-        host: %%DB_HOST%%
-        port: %%DB_PORT%%
-        name: %%DB_NAME%%
-        user: %%DB_USER%%
-        pass: %%DB_USER%%
+        host: %%PHINX_DBHOST%%
+        port: %%PHINX_DBPORT%%
+        name: %%PHINX_DBNAME%%
+        user: %%PHINX_DBUSER%%
+        pass: %%PHINX_DBPASSWORD%%
         charset: utf8mb4
 
     testing:
         adapter: mysql
-        host: %%DB_HOST%%
-        port: %%DB_PORT%%
-        name: %%DB_NAME%%
-        user: %%DB_USER%%
-        pass: %%DB_USER%%
+        host: %%PHINX_DBHOST%%
+        port: %%PHINX_DBPORT%%
+        name: %%PHINX_DBNAME%%
+        user: %%PHINX_DBUSER%%
+        pass: %%PHINX_DBPASSWORD%%
         charset: utf8mb4

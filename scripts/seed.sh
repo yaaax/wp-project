@@ -14,8 +14,8 @@ DIR=$(dirname $(readlink -f "$0"))
 echo "Starting to import database seed..."
 
 if wp core is-installed; then
-  echo "Database already exists, skipping seed..."
-  exit 0
+  echo "Database already exists, updating core tables..."
+  wp core update-db
 elif ! wp core version; then
   echo "ERROR: Couldn't find wp-core. Aborting..."
   exit 1
@@ -35,7 +35,7 @@ elif [ "$WP_ENV" = "development" ]; then
   wp db import $DIR/../db/wordpress.sql
 
 elif [ "$WP_ENV" = "testing" ]; then
-  
+
   echo "Importing seed data from production database..."
   mysqldump -h $PRODUCTION_HOST -u$PRODUCTION_USER -p$PRODUCTION_PASSWORD $PRODUCTION_DB $DIR/../db/dump.sql
 
