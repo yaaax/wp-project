@@ -27,7 +27,7 @@ web:
     DB_NAME: wordpress
     DB_USER: wordpress
     DB_PASSWORD: wordpress
-    MAIL_DOMAIN: wordpress.test
+    SMTP_FROM: no-reply@wordpress.test
   dns:
     # We need to add this static ip here until we can add --dns flag in nlf/dlite
     # Related issue: https://github.com/nlf/dlite/issues/90
