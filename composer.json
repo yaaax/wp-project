@@ -16,17 +16,6 @@
   "config": {
     "preferred-install": "dist"
   },
-  "autoload": {
-    "psr-0": {"Wordpress\\Installer": "scripts"}
-  },
-  "scripts": {
-    "post-install-cmd": [
-    "Wordpress\\Installer::symlinkWPContent"
-    ],
-    "post-update-cmd": [
-    "Wordpress\\Installer::symlinkWPContent"
-    ]
-  },
   "repositories": [
     {
       "type": "composer",
