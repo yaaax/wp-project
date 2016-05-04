@@ -1,6 +1,5 @@
 web:
-  #image: devgeniem/alpine-wordpress:1.0.1
-  build: docker-alpine-wordpress/
+  image: devgeniem/alpine-wordpress:latest
   ports:
     - 80
   links:
