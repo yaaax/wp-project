@@ -37,6 +37,6 @@ end
 RSpec::Matchers::define :have_rss_link do |link|
   match do |page|
     feed =  RSS::Parser.parse(page.body)
-    link == feed.channel.link
+    feed.channel.link.include? link
   end
 end
