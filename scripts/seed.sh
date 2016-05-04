@@ -17,27 +17,25 @@ if wp core is-installed; then
   echo "Database already exists, updating core tables..."
   wp core update-db
 elif ! wp core version; then
-  echo "ERROR: Couldn't find wp-core. Aborting..."
+  echo "ERROR: Couldn't find wp core. Aborting..."
   exit 1
 fi
 
 ##
-# Add seed or necessary changes to database
+# Add seed or necessary changes to database depending on env
 ##
-if [ "$WP_ENV" = "production" ]; then
+if [ "$WP_ENV" = "production" ] || [ "$WP_ENV" = "staging" ]; then
 
-  echo "Importing seed data from db/wordpress.sql..."
-  wp db import $DIR/../db/wordpress.sql
+  # Don't use seed data in production yet
+  echo "Production/Staging don't use seed data at the moment"
 
-elif [ "$WP_ENV" = "development" ]; then
+elif [ "$WP_ENV" = "development" ] || [ "$WP_ENV" = "testing" ]; then
 
-  echo "Importing seed data from db/wordpress.sql..."
-  wp db import $DIR/../db/wordpress.sql
+  phinx seed:run
 
-elif [ "$WP_ENV" = "testing" ]; then
-
-  echo "Importing seed data from production database..."
-  mysqldump -h $PRODUCTION_HOST -u$PRODUCTION_USER -p$PRODUCTION_PASSWORD $PRODUCTION_DB $DIR/../db/dump.sql
-
-  wp db import $DIR/../db/dump.sql
 fi
+
+##
+# Run migrations with phinx
+##
+phinx migrate -e $WP_ENV
