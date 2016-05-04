@@ -10,7 +10,7 @@ require_relative 'lib/config.rb'
 
 ### Begin tests ###
 
-describe "wordpress: #{WP.siteurl} - ", :type => :request, :js => true do 
+describe "wordpress: #{WP.siteurl} - ", :type => :request, :js => true do
 
   subject { page }
 
@@ -21,28 +21,29 @@ describe "wordpress: #{WP.siteurl} - ", :type => :request, :js => true do
     end
 
     # 200 Means OK
-    # 503 Means Service Unavailable - For example under construction
-    it "Healthy status code 200, 503" do
-      expect(page).to have_status_of [200,503]
+    it "Healthy status code 200" do
+      expect(page).to have_status_of [200]
     end
 
     it "Page includes stylesheets" do
       expect(page).to have_css
     end
 
-    # Example: Check that page has javascript
-    #it "Page includes javascript" do
-    #  expect(page).to have_js
-    #end
+    it "Page includes javascript" do
+      expect(page).to have_js
+    end
 
-    # Example: of link clicking and following to next page
-    #it "After user clicks archive link, User should see archives" do
-    #  click_link('lokakuu 2015')
-    #  expect(page).to have_content 'Kuukausi'
-    #end
+  end
 
-    ### Add more customised business critical frontend tests here #####
-    
+  # Check that rss feed is working
+  describe "rss-feed" do
+    before do
+      visit WP.siteurl('/?feed=rss2')
+    end
+
+    it "should be valid rss and have link to itself" do
+      expect(page).to have_rss_link WP.siteurl('')
+    end
   end
 
   describe "admin-panel" do
@@ -69,5 +70,5 @@ describe "wordpress: #{WP.siteurl} - ", :type => :request, :js => true do
     end
 
   end
- 
+
 end

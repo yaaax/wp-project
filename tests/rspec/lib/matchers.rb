@@ -1,5 +1,8 @@
 # Include these into your rspec for basic testing
 
+# This is needed for rss feed parsing
+require 'rss'
+
 RSpec::Matchers::define :have_title do |text|
   match do |page|
     Capybara.string(page.body).has_selector?('title', text: text)
@@ -27,5 +30,13 @@ end
 RSpec::Matchers::define :have_id do |id|
   match do |page|
     page.body.include? id
+  end
+end
+
+# Custom matcher to check if rss feed is valid and has link
+RSpec::Matchers::define :have_rss_link do |link|
+  match do |page|
+    feed =  RSS::Parser.parse(page.body)
+    link == feed.channel.link
   end
 end
