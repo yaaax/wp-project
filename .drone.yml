@@ -5,6 +5,7 @@ build:
     - env
     - ./scripts/install.sh
     - ./scripts/seed.sh
+    - wp plugin list
     - ./scripts/test.sh
   environment:
     WP_ENV: testing
