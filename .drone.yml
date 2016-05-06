@@ -9,21 +9,21 @@ build:
     - ./scripts/test.sh
   environment:
     WP_ENV: testing
-
     DB_NAME: wordpress
     DB_USER: wordpress
     DB_PASSWORD: wordpress
-
     SMTP_FROM: no-reply@wordpress.test
 
-  services:
-    db:
-      image: mariadb
-      environment:
-        MYSQL_DATABASE: wordpress
-        MYSQL_USER: wordpress
-        MYSQL_PASSWORD: wordpress
-        MYSQL_RANDOM_ROOT_PASSWORD: 1
+# List needed services here
+compose:
+  db:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+
 ##
 # Change your slack url here
 ##
