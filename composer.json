@@ -41,6 +41,9 @@
 
     "robmorgan/phinx": "^0.5.3"
   },
+  "require-dev": {
+
+  },
   "extra": {
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
