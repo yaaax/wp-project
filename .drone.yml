@@ -7,7 +7,14 @@ build:
     - ./scripts/seed.sh
     - wp plugin list
     - ./scripts/test.sh
+  cache:
+    mount:
+      - /root/.composer
   environment:
+
+    WP_UID: 100
+    WP_GID: 101
+
     WP_ENV: testing
     DB_NAME: wordpress
     DB_USER: wordpress
