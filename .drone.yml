@@ -4,7 +4,7 @@ build:
   commands:
     - env
     - pwd
-    - composer install --cache-dir=/drone/.composer
+    - composer install
     - ./scripts/seed.sh
     - wp plugin list
     - ./scripts/test.sh
@@ -12,6 +12,8 @@ build:
     mount:
       - /drone/.composer
   environment:
+    # Allow better caching of composer packages
+    COMPOSER_HOME: /drone/.composer
 
     WP_UID: 100
     WP_GID: 101
