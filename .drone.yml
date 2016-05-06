@@ -2,7 +2,7 @@ build:
   image: devgeniem/alpine-wordpress
   pull: true
   commands:
-    - env
+    - /init # run container init scripts
     - pwd
     - composer install
     - ./scripts/seed.sh
