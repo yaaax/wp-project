@@ -3,13 +3,14 @@ build:
   pull: true
   commands:
     - env
-    - ./scripts/install.sh
+    - pwd
+    - composer install --cache-dir=/drone/.composer
     - ./scripts/seed.sh
     - wp plugin list
     - ./scripts/test.sh
   cache:
     mount:
-      - /root/.composer
+      - /drone/.composer
   environment:
 
     WP_UID: 100
