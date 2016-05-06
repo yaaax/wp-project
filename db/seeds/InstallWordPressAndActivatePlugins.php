@@ -58,7 +58,10 @@ class InstallWordPressAndActivatePlugins extends AbstractSeed
         echo "\nYou can log in with credentials: {$username} / {$password}\n\n";
 
         echo "Activating all installed plugins...\n";
-        system("wp plugin activate --all");
+
+        # Disable welcome mail when installing here
+        $disable_mail_file = dirname(dirname(dirname(__FILE__))).'/tests/rspec/lib/disable-wp-mail.php';
+        system("wp plugin activate --all --require={$disable_mail_file}");
       }
     }
 }
