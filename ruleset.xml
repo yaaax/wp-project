@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<ruleset name="Geniem Project">
+  <description>A custom set of rules to check for a Geniem WordPress project</description>
+
+  <exclude-pattern>/wp/wp-admin/*</exclude-pattern>
+  <exclude-pattern>/wp/wp-includes/*</exclude-pattern>
+  <exclude-pattern>/wp/wp-*.php</exclude-pattern>
+  <exclude-pattern>/wp/index.php</exclude-pattern>
+  <exclude-pattern>/wp/xmlrpc.php</exclude-pattern>
+  <exclude-pattern>/wp/wp-content/plugins/*</exclude-pattern>
+  <exclude-pattern>*.twig</exclude-pattern>
+
+  <exclude-pattern>/mu-plugins/bedrock-autoloader.php</exclude-pattern>
+
+  <exclude-pattern>/tests/</exclude-pattern>
+
+  <!-- Use 2 spaces for indentation -->
+  <arg name="tab-width" value="2"/>
+  <rule ref="PEAR.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2"/>
+    </properties>
+  </rule>
+
+  <rule ref="Squiz.PHP.CommentedOutCode"/>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+  <rule ref="Generic.Commenting.Todo"/>
+  <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+
+  <!-- <?php tags and constants (true,false,null) need to be lowercase  -->
+  <rule ref="Generic.PHP.LowerCaseKeyword"/>
+  <rule ref="Generic.PHP.LowerCaseConstant"/>
+
+  <!-- We may also want to to include all the rules in a standard -->
+  <rule ref="WordPress">
+    <!--
+    We may want a middle ground though. The best way to do this is add the
+    entire ruleset, then rule by rule, remove ones that don't suit a project. We
+    can do this by running `phpcs` with the '-s' flag, to see the names of the
+    different Sniffs, as their rules are broken. From here, we can opt to
+    exclude problematic sniffs like so.
+    -->
+
+    <!-- These are nice but don't have any idea of context -->
+    <exclude name="WordPress.VIP.ValidatedSanitizedInput.MissingUnslash" />
+    <exclude name="WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized" />
+
+    <exclude name="WordPress.WhiteSpace.ControlStructureSpacing" />
+    <exclude name="WordPress.WhiteSpace.OperatorSpacing"/>
+    <exclude name="WordPress.WhiteSpace.CastStructureSpacing"/>
+    <exclude name="WordPress.XSS.EscapeOutput" />
+    <exclude name="Generic.WhiteSpace.ScopeIndent" />
+
+    <!-- Use spaces instead of tabs -->
+    <exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
+
+    <!-- Package Tag seems unimportant in plugins -->
+    <exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
+
+    <!-- We use so many static classes so class comment isn't really helpful -->
+    <exclude name="Squiz.Commenting.ClassComment.Missing" />
+  </rule>
+
+</ruleset>

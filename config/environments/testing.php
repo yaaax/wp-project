@@ -1,7 +1,9 @@
-<?php
-/* Drone testing environment */
-
+<?PHP
 /**
- * We don't have ssl in drone
+ * CI testing environment
+ *
+ * @package geniem/wp-project
  */
-define('FORCE_SSL_ADMIN', false);
+
+// CI server doesn't have or use ssl.
+define( 'FORCE_SSL_ADMIN', false );

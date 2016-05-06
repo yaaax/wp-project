@@ -11,21 +11,35 @@
 namespace onnimonni\helper;
 
 class Uploads {
-  static function init(){
-    add_filter( 'pre_option_upload_path', array(__CLASS__, 'change_upload_path') );
-    add_filter( 'pre_option_upload_url_path', array(__CLASS__, 'change_upload_url_path') );
+
+  /**
+   * Activate hooks into wordpress
+   */
+  static function init() {
+    add_filter( 'pre_option_upload_path', array( __CLASS__, 'change_upload_path' ) );
+    add_filter( 'pre_option_upload_url_path', array( __CLASS__, 'change_upload_url_path' ) );
   }
 
-  static function change_upload_path( $option ){
-    if( defined('WP_UPLOADS_DIR') ) {
+  /**
+   * Changes upload path to WP_UPLOADS_DIR if it's defined
+   *
+   * @param string $option - default option for upload path.
+   */
+  static function change_upload_path( string $option ) {
+    if ( defined( 'WP_UPLOADS_DIR' ) ) {
       return WP_UPLOADS_DIR;
     } else {
       return $option;
     }
   }
 
-  static function change_upload_url_path( $option ){
-    if( defined('WP_UPLOADS_URL') ) {
+  /**
+   * Changes upload url to WP_UPLOADS_URL if it's defined
+   *
+   * @param string $option - default option for upload url.
+   */
+  static function change_upload_url_path( string $option ) {
+    if ( defined( 'WP_UPLOADS_URL' ) ) {
       return WP_UPLOADS_URL;
     } else {
       return $option;
