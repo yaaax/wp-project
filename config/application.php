@@ -26,7 +26,7 @@ if ( file_exists( $root_dir . '/.env' ) ) {
  * Set up our global environment constant and load its config first
  * Default: development
  */
-define( 'WP_ENV' , env( 'WP_ENV' ) ?: 'development' );
+define( 'WP_ENV', env( 'WP_ENV' ) ?: 'development' );
 
 $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 
@@ -40,7 +40,7 @@ if ( file_exists( $env_config ) ) {
  * We can always just use nginx to redirect aliases to canonical url
  * This helps changing between dev->stage->production
  */
-define( 'WP_HOME',    env( 'WP_HOME' ) ? env( 'WP_HOME' ) : env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
+define( 'WP_HOME', env( 'WP_HOME' ) ? env( 'WP_HOME' ) : env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
 define( 'WP_SITEURL', env( 'WP_SITEURL' ) ? env( 'WP_SITEURL' ) : env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
 
 /**
@@ -54,10 +54,10 @@ define( 'WP_CONTENT_URL', WP_HOME . CONTENT_DIR );
  * DB settings - Use DB_NAME, DB_USER, DB_PASSWORD, DB_HOST first
  * but fallback to docker container links
  */
-define( 'DB_NAME',     env( 'DB_NAME' ) ?: env( 'DB_ENV_MYSQL_PASSWORD' ) );
-define( 'DB_USER',     env( 'DB_USER' ) ?: env( 'DB_ENV_MYSQL_USER' ) );
+define( 'DB_NAME', env( 'DB_NAME' ) ?: env( 'DB_ENV_MYSQL_PASSWORD' ) );
+define( 'DB_USER', env( 'DB_USER' ) ?: env( 'DB_ENV_MYSQL_USER' ) );
+define( 'DB_HOST', env( 'DB_HOST' ) ?: env( 'DB_PORT_3306_TCP_ADDR' ) );
 define( 'DB_PASSWORD', env( 'DB_PASSWORD' ) ?: env( 'DB_ENV_MYSQL_PASSWORD' ) );
-define( 'DB_HOST',     env( 'DB_HOST' ) ?: env( 'DB_PORT_3306_TCP_ADDR' ) );
 define( 'DB_CHARSET', env( 'DB_CHARSET' ) ?: 'utf8mb4' );
 define( 'DB_COLLATE', env( 'DB_COLLATE' ) ?: 'utf8mb4_swedish_ci' );
 $table_prefix = env( 'DB_PREFIX' ) ?: 'wp_';

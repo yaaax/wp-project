@@ -7,12 +7,16 @@
   <exclude-pattern>/wp/wp-*.php</exclude-pattern>
   <exclude-pattern>/wp/index.php</exclude-pattern>
   <exclude-pattern>/wp/xmlrpc.php</exclude-pattern>
-  <exclude-pattern>/wp/wp-content/plugins/*</exclude-pattern>
+  <exclude-pattern>/wp/</exclude-pattern>
   <exclude-pattern>*.twig</exclude-pattern>
 
   <exclude-pattern>/mu-plugins/bedrock-autoloader.php</exclude-pattern>
 
   <exclude-pattern>/tests/</exclude-pattern>
+  <exclude-pattern>/app/plugins</exclude-pattern>
+
+  <!-- Disallow tabs altogether -->
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent.TabsUsed"/>
 
   <!-- Use 2 spaces for indentation -->
   <arg name="tab-width" value="2"/>
@@ -28,6 +32,12 @@
   <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
   <rule ref="Generic.Commenting.Todo"/>
   <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+
+  <!-- no spaces before comma in function calls -->
+  <rule ref="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma"/>
+
+  <!-- Closing brackets can be really painful to debug. Just disallow them -->
+  <rule ref="PSR2.Files.ClosingTag.NotAllowed"/>
 
   <!-- <?php tags and constants (true,false,null) need to be lowercase  -->
   <rule ref="Generic.PHP.LowerCaseKeyword"/>
@@ -47,10 +57,7 @@
     <exclude name="WordPress.VIP.ValidatedSanitizedInput.MissingUnslash" />
     <exclude name="WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized" />
 
-    <exclude name="WordPress.WhiteSpace.ControlStructureSpacing" />
-    <exclude name="WordPress.WhiteSpace.OperatorSpacing"/>
-    <exclude name="WordPress.WhiteSpace.CastStructureSpacing"/>
-    <exclude name="WordPress.XSS.EscapeOutput" />
+    <!-- Exclude indentation rules and use PEAR.WhiteSpace.ScopeIndent instead -->
     <exclude name="Generic.WhiteSpace.ScopeIndent" />
 
     <!-- Use spaces instead of tabs -->

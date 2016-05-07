@@ -1,5 +1,10 @@
 <?php
+/**
+ * WordPress view bootstrapper
+ *
+ * @package geniem/wp-project
+ */
 
-// WordPress view bootstrapper
-define('WP_USE_THEMES', true);
-require(dirname( __FILE__ ) . '/wp/wp-blog-header.php');
+// Start WordPress.
+define( 'WP_USE_THEMES', true );
+require( dirname( __FILE__ ) . '/wp/wp-blog-header.php' );
