@@ -20,6 +20,6 @@ if [ "$WP_ENV" = "production" ] || [ "$WP_ENV" = "staging" ]; then
 
 elif [ "$WP_ENV" = "development" ] || [ "$WP_ENV" = "testing" ]; then
 
-  phinx seed:run
+  phinx seed:run -q
 
 fi
