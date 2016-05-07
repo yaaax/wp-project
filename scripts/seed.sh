@@ -1,9 +1,38 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
 
 ##
-# This file is used to create basic starting point for dev/test/stage/production
+# This file is used to create basic starting point content for dev/test/stage/production
 ##
+
+# Set defaults
+if [ "$DB_HOST" == "" ] || ["$DB_PORT_3306_TCP_ADDR" != ""]; then
+  DB_HOST=$DB_PORT_3306_TCP_ADDR
+else
+  DB_HOST="localhost"
+fi
+
+if [ "$DB_PORT" == "" ]; then
+  DB_PORT="3306"
+fi
+
+# Wait until mysql is open
+nc -z $DB_HOST $DB_PORT
+if [[ $? != 0 ]] ; then
+  echo "Waiting mysql to open in $DB_HOST:$DB_PORT..."
+  declare -i i
+  while ! nc -z $DB_HOST $DB_PORT; do
+    if [ "$i" == "15" ]; then
+      echo "Error: Mysql process timeout"
+      exit 1
+    fi
+    i+=1
+    sleep 1
+  done
+fi
+
+# Fail after errors
+set -e
+
 
 # Get script directory
 DIR=$(dirname $(readlink -f "$0"))

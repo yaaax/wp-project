@@ -13,7 +13,10 @@
   <exclude-pattern>/mu-plugins/bedrock-autoloader.php</exclude-pattern>
 
   <exclude-pattern>/tests/</exclude-pattern>
-  <exclude-pattern>/app/plugins</exclude-pattern>
+
+  <exclude-pattern>db/seeds/</exclude-pattern>
+  <exclude-pattern>db/migrations/</exclude-pattern>
+  <exclude-pattern>app/install.php</exclude-pattern>
 
   <!-- There MUST NOT be more than one statement per line. -->
   <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
@@ -92,6 +95,14 @@
 
     <!-- We use so many static classes so class comment isn't really helpful -->
     <exclude name="Squiz.Commenting.ClassComment.Missing" />
+
+    <!-- This just makes commenting a lot more painful, even small comments are good -->
+    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+
+    <!-- Don't care if function calls have spaces after brackets or not -->
+    <!-- this is because __('word') looks better than __( 'word' ) -->
+    <exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
+    <exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
   </rule>
 
 </ruleset>

@@ -21,13 +21,13 @@ build:
     # run container init scripts and start services
     - /init &
 
+    # Enforce coding practises by style checks
+    - ./scripts/code-style.sh
+
     # Install php dependencies
     - ./scripts/install.sh
 
-    # Wait for mariadb to be ready
-    - while ! nc -z localhost 3306; do sleep 0.5; done
-
-    # Install wordpress
+    # Wait for mysql and Install WordPress
     - ./scripts/seed.sh
 
     # Run the tests
