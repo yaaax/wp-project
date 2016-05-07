@@ -15,6 +15,9 @@
   <exclude-pattern>/tests/</exclude-pattern>
   <exclude-pattern>/app/plugins</exclude-pattern>
 
+  <!-- There MUST NOT be more than one statement per line. -->
+  <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+
   <!-- Disallow tabs altogether -->
   <rule ref="Generic.WhiteSpace.DisallowTabIndent.TabsUsed"/>
 
@@ -25,6 +28,27 @@
       <property name="indent" value="2"/>
     </properties>
   </rule>
+
+  <!--
+    The soft limit on line length MUST be 120 characters
+    automated style checkers MUST warn but MUST NOT error at the soft limit.
+  -->
+  <rule ref="Generic.Files.LineLength">
+    <properties>
+      <property name="lineLimit" value="100"/>
+      <property name="absoluteLineLimit" value="0"/>
+    </properties>
+  </rule>
+
+  <!-- All PHP files MUST use the Unix LF (linefeed) line ending. -->
+  <rule ref="Generic.Files.LineEndings">
+    <properties>
+      <property name="eolChar" value="\n"/>
+    </properties>
+  </rule>
+
+  <!-- Method arguments with default values MUST go at the end of the argument list. -->
+  <rule ref="PEAR.Functions.ValidDefaultValue"/>
 
   <rule ref="Squiz.PHP.CommentedOutCode"/>
   <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
