@@ -18,8 +18,8 @@ build:
     - mkdir /data
     - ln -s $PWD /data/code
 
-    # run container init scripts and start services
-    - /init &
+    # Run container init scripts and start services in background
+    - /init >> /dev/null &
 
     # Enforce coding practises by style checks
     - ./scripts/code-style.sh
