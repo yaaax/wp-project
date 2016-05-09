@@ -1,21 +1,32 @@
 <?xml version="1.0"?>
 <ruleset name="Geniem Project">
-  <description>A custom set of rules to check for a Geniem WordPress project</description>
+  <description>A custom set of rules to check styles for a Geniem WP projects</description>
 
+  <!-- Exclude wp core files -->
   <exclude-pattern>/wp/wp-admin/*</exclude-pattern>
   <exclude-pattern>/wp/wp-includes/*</exclude-pattern>
   <exclude-pattern>/wp/wp-*.php</exclude-pattern>
   <exclude-pattern>/wp/index.php</exclude-pattern>
   <exclude-pattern>/wp/xmlrpc.php</exclude-pattern>
   <exclude-pattern>/wp/</exclude-pattern>
+
+  <!-- Exclude twig files always -->
   <exclude-pattern>*.twig</exclude-pattern>
 
+  <!-- This is from roots/bedrock and keep it as is -->
   <exclude-pattern>/mu-plugins/bedrock-autoloader.php</exclude-pattern>
 
+  <!-- Tests might have unusual notations which we can't check -->
   <exclude-pattern>/tests/</exclude-pattern>
 
+  <!-- Skip phinx seeds/migrations -->
   <exclude-pattern>db/seeds/</exclude-pattern>
   <exclude-pattern>db/migrations/</exclude-pattern>
+
+  <!--
+    Skip our custom wordpress install.php drop-in.
+    This contains sql queries from the basic wp example and for good reason.
+  -->
   <exclude-pattern>app/install.php</exclude-pattern>
 
   <!-- There MUST NOT be more than one statement per line. -->
@@ -70,7 +81,7 @@
   <rule ref="Generic.PHP.LowerCaseKeyword"/>
   <rule ref="Generic.PHP.LowerCaseConstant"/>
 
-  <!-- We may also want to to include all the rules in a standard -->
+  <!-- Include WordPress Coding Standards with few exclusions -->
   <rule ref="WordPress">
     <!--
     We may want a middle ground though. The best way to do this is add the
