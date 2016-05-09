@@ -5,12 +5,13 @@
 ##
 
 # Set defaults
-if [ "$DB_HOST" == "" ] || ["$DB_PORT_3306_TCP_ADDR" != ""]; then
+
+# This is for local development where DB_HOST is unknown beforehand
+if [ "$DB_HOST" == "" ] && [ "$DB_PORT_3306_TCP_ADDR" != "" ]; then
   DB_HOST=$DB_PORT_3306_TCP_ADDR
-else
-  DB_HOST="localhost"
 fi
 
+# Use default port if not defined
 if [ "$DB_PORT" == "" ]; then
   DB_PORT="3306"
 fi
