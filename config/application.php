@@ -63,6 +63,14 @@ define( 'DB_COLLATE', env( 'DB_COLLATE' ) ?: 'utf8mb4_swedish_ci' );
 $table_prefix = env( 'DB_PREFIX' ) ?: 'wp_';
 
 /**
+ * Use redis for object cache
+ */
+define('WP_REDIS_CLIENT', env('WP_REDIS_CLIENT') );
+define('WP_REDIS_HOST', env( 'WP_REDIS_HOST' ) ?: env( 'REDIS_PORT_6379_TCP_ADDR' ) );
+define('WP_REDIS_DATABASE', env( 'WP_REDIS_DATABASE' ) ?: '0' );
+define('WP_CACHE_KEY_SALT', env( 'WP_CACHE_KEY_SALT' ) ?: 'wp_' );
+
+/**
  * Authentication Unique Keys and Salts
  */
 define( 'AUTH_KEY', env( 'AUTH_KEY' ) );
@@ -106,6 +114,8 @@ define( 'PLL_COOKIE', false );
  * Always log errors
  */
 ini_set( 'log_errors', 'On' );
+
+
 
 /**
  * Bootstrap WordPress
