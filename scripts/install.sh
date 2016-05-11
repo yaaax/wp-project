@@ -22,13 +22,13 @@ elif [ "$WP_ENV" = "testing" ]; then
   # Install same packages as in production
   # It's important to use same composer config here as in production
   echo "Installing composer packages..."
-  composer install --no-dev --working-dir=$DIR/../
+  composer install --no-interaction --no-dev --working-dir=$DIR/../
 
 else
 
   # Install composer dependencies without require-dev
   echo "Installing composer packages without dev..."
-  composer install --no-dev --working-dir=$DIR/../
+  composer install --no-interaction --no-dev --working-dir=$DIR/../
 
 fi
 

@@ -14,7 +14,8 @@
     "wordpress", "composer", "wp"
   ],
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "discard-changes": true
   },
   "repositories": [
     {
