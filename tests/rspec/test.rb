@@ -10,33 +10,33 @@ require_relative 'lib/config.rb'
 
 ### Begin tests ###
 
-describe "wordpress: #{WP.siteurl} - ", :type => :request, :js => true do
+describe "WordPress: #{WP.siteurl} - ", :type => :request, :js => true do
 
   subject { page }
 
-  describe "frontpage" do
+  describe "Frontpage" do
 
     before do
       visit WP.siteurl('/')
     end
 
     # 200 Means OK
-    it "Healthy status code 200" do
+    it "should have healthy status code 200" do
       expect(page).to have_status_of [200]
     end
 
-    it "Page includes stylesheets" do
+    it "should include stylesheets" do
       expect(page).to have_css
     end
 
-    it "Page includes javascript" do
+    it "should includes javascript" do
       expect(page).to have_js
     end
 
   end
 
   # Check that rss feed is working
-  describe "rss-feed" do
+  describe "RSS-feed" do
     before do
       visit WP.siteurl('/?feed=rss2')
     end
@@ -46,19 +46,20 @@ describe "wordpress: #{WP.siteurl} - ", :type => :request, :js => true do
     end
   end
 
-  describe "admin-panel" do
+  # Check that WordPress login works
+  describe "wp-login" do
 
     before do
       visit WP.siteurl('/wp-login.php')
     end
 
-    it "There's a login form" do
+    it "has login form" do
       expect(page).to have_id "wp-submit"
     end
 
     # Only run these if we could create a test user
     if WP.user?
-      it "Logged in to WordPress Dashboard" do
+      it "after succesfully login user should see WordPress adminbar" do
         within("#loginform") do
           fill_in 'log', :with => WP.user.username
           fill_in 'pwd', :with => WP.user.password
