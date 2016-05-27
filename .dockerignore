@@ -1,0 +1,12 @@
+##
+# This file is used in build phase after passing tests in Drone CI
+##
+
+# We don't need tests anymore in passing builds
+tests
+
+# We don't need any docker related tmp files and directives anymore
+.docker
+.drone.yml
+.docker-compose.yml
+Dockerfile
