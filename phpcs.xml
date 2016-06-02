@@ -22,6 +22,9 @@
   <!-- Tests might have unusual notations which we can't check -->
   <exclude-pattern>/tests/</exclude-pattern>
 
+  <!-- Don't check composer dependencies -->
+  <exclude-pattern>/vendor/</exclude-pattern>
+
   <!-- Skip phinx seeds/migrations -->
   <exclude-pattern>db/seeds/</exclude-pattern>
   <exclude-pattern>db/migrations/</exclude-pattern>
