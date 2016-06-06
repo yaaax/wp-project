@@ -10,3 +10,6 @@ tests
 .drone.yml
 .docker-compose.yml
 Dockerfile
+
+# This is pretty meta
+.dockerignore
