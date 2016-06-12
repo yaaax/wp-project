@@ -10,16 +10,15 @@ DIR=$(dirname $(readlink -f "$0"))
 
 ##
 # Check php coding practises with codesniffer
+# - check only files in git and not files from plugins/packages
 ##
 if [ "$WP_ENV" = "testing" ]; then
 
   # Show only summary in CI environment
-  /var/lib/wpcs/vendor/bin/phpcs -n -p --report=summary --standard=$DIR/../ruleset.xml \
-    $DIR/../web/
+  /var/lib/wpcs/vendor/bin/phpcs -n -p --report=summary --standard=$DIR/../phpcs.xml $(git ls-files | grep .php)
 
 else
 
-  # Check only files in git and not files from plugins/packages
-  /var/lib/wpcs/vendor/bin/phpcs --standard=$DIR/../ruleset.xml $(git ls-files | grep .php)
+  /var/lib/wpcs/vendor/bin/phpcs --standard=$DIR/../phpcs.xml $(git ls-files | grep .php)
 
 fi
