@@ -42,6 +42,9 @@ class InstallWordPressAndActivatePlugins extends AbstractSeed
         $email = getenv('SMTP_FROM');
       } elseif ( getenv('WP_HOME') ) {
         $email = "admin@".parse_url(getenv('WP_HOME'))['host'];
+      } else {
+        # Just use some email if this is in testing or local
+        $email = "wordpress@wordpress.test";
       }
 
       // Use custom env to override these defaults
