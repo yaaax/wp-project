@@ -1,3 +1,11 @@
+clone:
+  path: project
+
+cache:
+  mount:
+    - /drone/.composer
+    - /drone/src/project/web/app/themes/THEME/node_modules
+
 # List needed services here
 compose:
   db:
@@ -7,59 +15,82 @@ compose:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
       MYSQL_RANDOM_ROOT_PASSWORD: 1
+  cache:
+    image: redis
+  web:
+    image: devgeniem/wordpress-server
+    pull: true
+    environment:
+      OVERRIDE_ROOT: /drone/src/project
+
+      # Run processes as wordpress:web with these
+      WP_UID: 100
+      WP_GID: 101
+
+      WP_REDIS_HOST: 127.0.0.1
+
+      WP_ENV: testing
+
+      WP_HOME: http://127.0.0.1
+      WP_SITEURL: http://127.0.0.1
+
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_NAME: wordpress
+      DB_USER: wordpress
+      DB_PASSWORD: wordpress
+
+      SMTP_FROM: no-reply@wordpress.test
+    extra_hosts:
+      - "wordpress.test:127.0.0.1"
 
 build:
-  image: devgeniem/alpine-wordpress
-  pull: true
-  commands:
-    # Our container mountpoint is fixed into /data/code
-    # Symlink it to current directory
-    - rm -r /data
-    - mkdir /data
-    - ln -s $PWD /data/code
+  frontend:
+    image: devgeniem/node-assets-builder
+    pull: true
+    commands:
+      - cd web/app/themes/THEME/
+      - npm install
+      - ./node_modules/webpack/bin/webpack.js
+  backend:
+    image: devgeniem/wordpress-project-builder
+    pull: true
+    commands:
+      # Enforce coding practises by style checks
+      # TODO: This consumes more memory than we have available
+      - ./scripts/code-style.sh
 
-    # Run container init scripts and start services in background
-    - /init >> /dev/null &
+      # Install php dependencies
+      - ./scripts/install.sh
 
-    # Enforce coding practises by style checks
-    - ./scripts/code-style.sh
+      # Wait for mysql and Install WordPress
+      - ./scripts/seed.sh
 
-    # Install php dependencies
-    - ./scripts/install.sh
+      # Run the tests
+      - ./scripts/test.sh
 
-    # Wait for mysql and Install WordPress
-    - ./scripts/seed.sh
+    environment:
+      # Allow better caching of composer packages
+      COMPOSER_HOME: /drone/.composer
 
-    # Run the tests
-    - ./scripts/test.sh
+      # Allow all wrappers to work correctly and tell them the correct path
+      PROJECT_ROOT: /drone/src/project
+      WP_CORE: /drone/src/project/web/wp
 
-  environment:
-    # Allow better caching of composer packages
-    COMPOSER_HOME: /drone/.composer
+      WP_REDIS_HOST: 127.0.0.1
 
-    # Run processes as wordpress:web with these
-    WP_UID: 100
-    WP_GID: 101
+      WP_ENV: testing
 
-    WP_ENV: testing
+      WP_HOME: http://127.0.0.1
+      WP_SITEURL: http://127.0.0.1
 
-    WP_HOME: http://127.0.0.1
-    WP_SITEURL: http://127.0.0.1
-
-    # Drone maps service containers to localhost
-    # Use mariadb container for testing
-    # Use 127.0.0.1 over localhost because mysql will try socket instead if it's localhost
-    DB_HOST: 127.0.0.1
-    DB_PORT: 3306
-    DB_NAME: wordpress
-    DB_USER: wordpress
-    DB_PASSWORD: wordpress
-
-    SMTP_FROM: no-reply@wordpress.test
-
-cache:
-  mount:
-    - /drone/.composer
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_NAME: wordpress
+      DB_USER: wordpress
+      DB_PASSWORD: wordpress
+    extra_hosts:
+        - "wordpress.test:127.0.0.1"
 
 ##
 # Change your slack url here
