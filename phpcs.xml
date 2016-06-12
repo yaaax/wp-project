@@ -19,6 +19,9 @@
   <!-- This is from roots/bedrock and keep it as is -->
   <exclude-pattern>/mu-plugins/bedrock-autoloader.php</exclude-pattern>
 
+  <!-- Exclude object cache -->
+  <exclude-pattern>/app/object-cache.php</exclude-pattern>
+
   <!-- Tests might have unusual notations which we can't check -->
   <exclude-pattern>/tests/</exclude-pattern>
 

@@ -19,7 +19,7 @@ Env::init( );
  */
 $dotenv = new Dotenv\Dotenv( $root_dir );
 if ( file_exists( $root_dir . '/.env' ) ) {
-  $dotenv->load();
+    $dotenv->load();
 }
 
 /**
@@ -31,7 +31,7 @@ define( 'WP_ENV', env( 'WP_ENV' ) ?: 'development' );
 $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 
 if ( file_exists( $env_config ) ) {
-   include_once $env_config;
+    include_once $env_config;
 }
 
 /**
@@ -65,10 +65,10 @@ $table_prefix = env( 'DB_PREFIX' ) ?: 'wp_';
 /**
  * Use redis for object cache
  */
-define('WP_REDIS_CLIENT', env('WP_REDIS_CLIENT') );
-define('WP_REDIS_HOST', env( 'WP_REDIS_HOST' ) ?: env( 'REDIS_PORT_6379_TCP_ADDR' ) );
-define('WP_REDIS_DATABASE', env( 'WP_REDIS_DATABASE' ) ?: '0' );
-define('WP_CACHE_KEY_SALT', env( 'WP_CACHE_KEY_SALT' ) ?: 'wp_' );
+define( 'WP_REDIS_CLIENT', env( 'WP_REDIS_CLIENT' ) );
+define( 'WP_REDIS_HOST', env( 'WP_REDIS_HOST' ) ?: env( 'REDIS_PORT_6379_TCP_ADDR' ) );
+define( 'WP_REDIS_DATABASE', env( 'WP_REDIS_DATABASE' ) ?: '0' );
+define( 'WP_CACHE_KEY_SALT', env( 'WP_CACHE_KEY_SALT' ) ?: 'wp_' );
 
 /**
  * Authentication Unique Keys and Salts

@@ -6,17 +6,15 @@
  * Version: 0.1
  */
 
-
-add_filter( 'robots_txt', 'geniem_hide_non_production_robots', 10, 2 );
-
 /**
  * Hides staging/development from Search engines
- * @param $output - Output into robots.txt
- * @param $public - 1 or 0 depending if blog public meta is turned on
+ *
+ * @param string $output - Output into robots.txt.
+ * @param bool   $public - 1 or 0 depending if blog public meta is turned on.
  */
-function geniem_hide_non_production_robots( $output, $public ) {
+function geniem_hide_non_production_robots( string $output, bool $public ) {
     // Don't do anything if blog is already hidden
-    if ( '0' === $public ) { return $output; }
+    if ( ! $public ) { return $output; }
 
     // Hide all non production sites.
     if ( defined( 'WP_ENV' ) && WP_ENV !== 'production' ) {
@@ -26,3 +24,4 @@ function geniem_hide_non_production_robots( $output, $public ) {
 
     return $output;
 }
+add_filter( 'robots_txt', 'geniem_hide_non_production_robots', 10, 2 );
