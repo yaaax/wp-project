@@ -7,7 +7,14 @@
     {
       "name": "Onni Hakala",
       "email": "onni.hakala@geniem.com",
-      "homepage": "https://github.com/onnimonni"
+      "homepage": "https://github.com/onnimonni",
+      "role": "Project Lead Developer"
+    },
+    {
+      "name": "Hannu Kumpula",
+      "email": "hannu.kumpula@geniem.com",
+      "homepage": "http://geniem.com",
+      "role": "Project Manager"
     }
   ],
   "keywords": [
