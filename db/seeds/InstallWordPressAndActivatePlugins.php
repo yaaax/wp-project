@@ -66,5 +66,8 @@ class InstallWordPressAndActivatePlugins extends AbstractSeed
         $disable_mail_file = dirname(dirname(dirname(__FILE__))).'/tests/rspec/lib/disable-wp-mail.php';
         system("wp plugin activate --all --require={$disable_mail_file}");
       }
+
+      // Activate default theme if it's defined
+      system("wp eval 'switch_theme( WP_DEFAULT_THEME );'");
     }
 }

@@ -8,6 +8,8 @@
  * License:      MIT License
  */
 
+if (!is_blog_installed()) { return; }
+
 /**
  * This helps CI to automatically enable the right theme after installation
  * if WP_DEFAULT_THEME is defined
