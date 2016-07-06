@@ -23,7 +23,7 @@ compose:
     environment:
       OVERRIDE_ROOT: /drone/src/project
 
-      # Run processes as wordpress:web with these
+      # Run processes as wordpress:web with these permissions
       WP_UID: 100
       WP_GID: 101
 
@@ -31,8 +31,8 @@ compose:
 
       WP_ENV: testing
 
-      WP_HOME: http://127.0.0.1
-      WP_SITEURL: http://127.0.0.1
+      WP_HOME: http://wordpress.test
+      WP_SITEURL: http://wordpress.test
 
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
@@ -43,57 +43,60 @@ compose:
       SMTP_FROM: no-reply@wordpress.test
     extra_hosts:
       - "wordpress.test:127.0.0.1"
-
 build:
-  ##
-  # Use this for building assets with different container
-  ##
-  frontend:
-    image: devgeniem/node-assets-builder
-    pull: true
-    commands:
-      - cd web/app/themes/THEMENAME/
-      - npm install
-      - ./node_modules/webpack/bin/webpack.js
-  backend:
-    image: devgeniem/wordpress-project-builder
-    pull: true
-    commands:
-      # Enforce coding practises by style checks
-      # TODO: This consumes more memory than we have available
-      - ./scripts/code-style.sh
+  image: devgeniem/wordpress-project-builder
+  pull: true
+  commands:
+    # Our container mountpoint is fixed into /var/www/project
+    # Symlink it to current directory
+    - rm -r /var/www/project
+    - mkdir -p /var/www
+    - ln -s $PWD /var/www/project
 
-      # Install php dependencies
-      - ./scripts/install.sh
+    # Run container init scripts and start services in background
+    - /init >> /dev/null &
 
-      # Wait for mysql and Install WordPress
-      - ./scripts/seed.sh
+    # Enforce coding practises by style checks
+    - ./scripts/code-style.sh
 
-      # Run the tests
-      - ./scripts/test.sh
+    # Install php dependencies
+    - ./scripts/install.sh
 
-    environment:
-      # Allow better caching of composer packages
-      COMPOSER_HOME: /drone/.composer
+    # Wait for mysql and Install WordPress
+    - ./scripts/seed.sh
 
-      # Allow all wrappers to work correctly and tell them the correct path
-      PROJECT_ROOT: /drone/src/project
-      WP_CORE: /drone/src/project/web/wp
+    # Run the tests
+    - ./scripts/test.sh
 
-      WP_REDIS_HOST: 127.0.0.1
+  environment:
+    # Allow better caching of composer packages
+    COMPOSER_HOME: /drone/.composer
 
-      WP_ENV: testing
+    # Run processes as wordpress:web with these
+    WP_UID: 100
+    WP_GID: 101
 
-      WP_HOME: http://127.0.0.1
-      WP_SITEURL: http://127.0.0.1
+    WP_ENV: testing
 
-      DB_HOST: 127.0.0.1
-      DB_PORT: 3306
-      DB_NAME: wordpress
-      DB_USER: wordpress
-      DB_PASSWORD: wordpress
-    extra_hosts:
-        - "wordpress.test:127.0.0.1"
+    WP_HOME: http://wordpress.test
+    WP_SITEURL: http://wordpress.test
+
+    # Drone maps service containers to localhost
+    # Use mariadb container for testing
+    # Use 127.0.0.1 over localhost because mysql will try socket instead if it's localhost
+    DB_HOST: 127.0.0.1
+    DB_PORT: 3306
+    DB_NAME: wordpress
+    DB_USER: wordpress
+    DB_PASSWORD: wordpress
+
+    SMTP_FROM: no-reply@wordpress.test
+  extra_hosts:
+      - "wordpress.test:127.0.0.1"
+
+cache:
+  mount:
+    - /drone/.composer
 
 ##
 # Change your slack url here
@@ -111,15 +114,60 @@ build:
 #        <{{ repo.link_url }}|{{ repo.full_name }}>: {{ build.author }} broke {{ build.branch }} branch :(. <{{ build.link_url }}|See results>
 #      {{/success}}
 
-##
-# Deploy to Geniem cluster
-##
+# Use master branch for testing
+publish:
+  ecr:
+    access_key: "$$AWS_ACCESS_KEY"
+    secret_key: "$$AWS_SECRET_KEY"
+    region: eu-west-1
+    repo: sok-blogit/PROJECTNAME
+    tag: master
+    file: Dockerfile
+    storage_driver: vfs
+    when:
+      branch: master
+      success: true
 
-#deploy:
-#  webhook:
-#    debug: true
-#    method: PUT
-#    urls:
-#      - http://172.17.0.1/geniem-api/v1/deploy/
-#    content_type: application/json
-#    template: '{"name": "{{repo.name}}", "git_branch": "{{ build.branch }}", "commit": "{{build.commit}}", "status": "{{build.status}}" }'
+# Use stable branch for production
+publish:
+  ecr:
+    access_key: "$$AWS_ACCESS_KEY"
+    secret_key: "$$AWS_SECRET_KEY"
+    region: eu-west-1
+    repo: sok-blogit/PROJECTNAME
+    tag: stable
+    file: Dockerfile
+    storage_driver: vfs
+    when:
+      branch: stable
+      success: true
+
+##
+# Deploy site using consul events
+##
+deploy:
+
+  # Always deploy to staging servers
+  webhook:
+    debug: true
+    method: PUT
+    urls:
+      - http://test.api.service.consul/v1/event/fire/deploy
+    content_type: application/json
+    template: '{ "name": "{{repo.name}}", "commit": "{{build.commit}}", "timestamp": "{{build.started_at}}", "number": "{{build.number}}" }'
+    when:
+      branch: master
+      success: true
+
+  # Deploy stable branch into production
+  webhook:
+    debug: true
+    method: PUT
+    urls:
+      - http://production.api.service.consul/v1/event/fire/deploy
+    content_type: application/json
+    template: '{ "name": "{{repo.name}}", "commit": "{{build.commit}}", "timestamp": "{{build.started_at}}", "number": "{{build.number}}" }'
+    when:
+      branch: stable
+      success: true
+
