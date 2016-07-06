@@ -42,9 +42,6 @@ class InstallWordPressAndActivatePlugins extends AbstractSeed
         $email = getenv('SMTP_FROM');
       } elseif ( getenv('WP_HOME') ) {
         $email = "admin@".parse_url(getenv('WP_HOME'))['host'];
-      } else {
-        // Just use some email if this is in testing or local
-        $email = "wordpress@wordpress.test";
       }
 
       // Use custom env to override these defaults
@@ -67,7 +64,12 @@ class InstallWordPressAndActivatePlugins extends AbstractSeed
         system("wp plugin activate --all --require={$disable_mail_file}");
       }
 
-      // Activate default theme if it's defined
-      system("wp eval 'switch_theme( WP_DEFAULT_THEME );'");
+      // Activate default theme if it exists
+      echo "Activating the default theme if WP_DEFAULT_THEME is set...\n";
+      $theme_name = system("wp eval 'echo WP_DEFAULT_THEME;'",$retval);
+      echo "\n";
+      if ($retval === 0 && ! empty($theme_name) ) {
+        system("wp theme activate {$theme_name}");
+      }
     }
 }
