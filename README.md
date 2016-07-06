@@ -13,7 +13,8 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 - Includes phantomjs tests through rspec for doing integration testing. Source: [Seravo/wordpress](https://github.com/Seravo/wordpress).
 
 ## Workflow for WP projects
-1. Replace all `THEMENAME` references from your project to your project name.
+1. Replace all `THEMENAME` and `PROJECTNAME` references from your project to your project name.
+    * These can be for example: `ClientName` and `client-name`
 2. Add project participants into `composer.json` `authors` and rename the project `devgeniem/wp-project`->`devgeniem/client`.
     * You can also add project managers, designers and other developers here.
     * This is important so that we always have accountable people to advise with the project later on when it eventually might turn to more legacy project.
