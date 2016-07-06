@@ -1,4 +1,13 @@
 ##
+# Nodejs container which installs and builds all frontend assets
+##
+#frontend:
+#  image: devgeniem/node-assets-builder
+#  volumes:
+#    - ./web/app/themes/THEMENAME/:/build
+#  command: /bin/bash -c "npm install && ./node_modules/webpack/bin/webpack.js"
+
+##
 # Web Server which runs nginx+php
 ##
 web:
@@ -39,15 +48,6 @@ web:
     DB_USER: wordpress
     DB_PASSWORD: wordpress
     SMTP_FROM: no-reply@wordpress.test
-
-##
-# Nodejs container which installs and builds all frontend assets
-##
-frontend:
-  image: devgeniem/node-assets-builder
-  volumes:
-    - ./web/app/themes/THEME/:/build
-  command: /bin/bash -c "npm install && ./node_modules/webpack/bin/webpack.js"
 
 ##
 # PHP builder which install composer packages and wordpress database

@@ -35,13 +35,22 @@ if ( file_exists( $env_config ) ) {
 }
 
 /**
- * Set URLs
+ * Set URLs for WP
  * Deduct them from request parameters if developer didn't set them explicitly
  * We can always just use nginx to redirect aliases to canonical url
  * This helps changing between dev->stage->production
  */
-define( 'WP_HOME', env( 'WP_HOME' ) ? env( 'WP_HOME' ) : env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
-define( 'WP_SITEURL', env( 'WP_SITEURL' ) ? env( 'WP_SITEURL' ) : env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
+if ( defined('WP_HOME') ) {
+    define( 'WP_HOME', env( 'WP_HOME' ) );
+} elseif ( defined( 'REQUEST_SCHEME') and defined( 'HTTP_HOST' ) ) {
+    define( 'WP_HOME', env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
+}
+
+if ( defined( 'WP_SITEURL') ) {
+    define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
+} elseif ( defined( 'REQUEST_SCHEME') and defined( 'HTTP_HOST' ) ) {
+    define( 'WP_SITEURL', env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
+}
 
 /**
  * Custom Content Directory

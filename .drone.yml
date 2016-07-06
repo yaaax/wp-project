@@ -4,7 +4,7 @@ clone:
 cache:
   mount:
     - /drone/.composer
-    - /drone/src/project/web/app/themes/THEME/node_modules
+    - /drone/src/project/web/app/themes/THEMENAME/node_modules
 
 # List needed services here
 compose:
@@ -45,11 +45,14 @@ compose:
       - "wordpress.test:127.0.0.1"
 
 build:
+  ##
+  # Use this for building assets with different container
+  ##
   frontend:
     image: devgeniem/node-assets-builder
     pull: true
     commands:
-      - cd web/app/themes/THEME/
+      - cd web/app/themes/THEMENAME/
       - npm install
       - ./node_modules/webpack/bin/webpack.js
   backend:
