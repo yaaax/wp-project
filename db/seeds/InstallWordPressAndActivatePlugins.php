@@ -43,7 +43,7 @@ class InstallWordPressAndActivatePlugins extends AbstractSeed
       } elseif ( getenv('WP_HOME') ) {
         $email = "admin@".parse_url(getenv('WP_HOME'))['host'];
       } else {
-        # Just use some email if this is in testing or local
+        // Just use some email if this is in testing or local
         $email = "wordpress@wordpress.test";
       }
 
@@ -62,7 +62,7 @@ class InstallWordPressAndActivatePlugins extends AbstractSeed
 
         echo "Activating all installed plugins...\n";
 
-        # Disable welcome mail when installing here
+        // Disable welcome mail when installing here
         $disable_mail_file = dirname(dirname(dirname(__FILE__))).'/tests/rspec/lib/disable-wp-mail.php';
         system("wp plugin activate --all --require={$disable_mail_file}");
       }
