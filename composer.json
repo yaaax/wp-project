@@ -50,11 +50,11 @@
     "robmorgan/phinx": "^0.5.3"
   },
   "require-dev": {
-
+    "rarst/wps": ">=1.0.0"
   },
   "extra": {
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin","rarst/wps"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}": ["type:wordpress-theme"]
     },
