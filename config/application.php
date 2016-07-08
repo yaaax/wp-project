@@ -110,7 +110,8 @@ define( 'WP_UPLOADS_URL', env( 'WP_UPLOADS_URL' ) ? env( 'WP_UPLOADS_URL' ) : WP
 /**
  * Select default theme which is activated during project startup
  */
-define('WP_DEFAULT_THEME','THEMENAME');
+// Use this when the project has default theme to use
+//define('WP_DEFAULT_THEME','THEMENAME');
 
 /**
  * Define newsletter plugin logging into php logging directory
