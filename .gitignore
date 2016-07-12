@@ -37,9 +37,12 @@ web/app/mu-plugins/*
 ##
 # WP Dropins
 # - Use devgeniem/better-wp-db-error for db-error.php page
+# - Use devgeniem/better-wp-install-dropin for install.php
+# - Use wpackagist-plugin/redis-cache for object-cache.php
 ##
 web/app/db-error.php
 web/app/install.php
+web/app/object-cache.php
 
 ##
 # WP Themes
