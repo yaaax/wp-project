@@ -2,14 +2,31 @@
 # This file is used in build phase after passing tests in Drone CI
 ##
 
-# We don't need tests anymore in passing builds
+# We don't need tests in passing builds
 tests
+phpcs.xml
+
+# We don't need setup/test scripts anymore
+scripts/code-style.sh
+scripts/install.sh
+scripts/test.sh
+
+# No need to put other environments into production image
+config/environments/testing.php
+config/environments/development.php
 
 # We don't need any docker related tmp files and directives anymore
+image.tar
 .docker
 .drone.yml
-.docker-compose.yml
+.dockerignore
+docker-compose.yml
 Dockerfile
 
-# This is pretty meta
-.dockerignore
+# Git is not needed after deploy
+.git
+.gitignore
+
+# Composer is not needed after the image is builded
+composer.lock
+composer.json
