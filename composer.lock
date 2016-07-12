@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "571c96b11efe816842601adc1301bc83",
-    "content-hash": "b4eceedaa1131abddfe134f1a753e75d",
+    "hash": "48317f2dce7f00990842cae312dc2f81",
+    "content-hash": "5ac7b0cff3c53b9e9a25a4e9f085ab41",
     "packages": [
         {
             "name": "composer/installers",
@@ -93,16 +93,16 @@
         },
         {
             "name": "devgeniem/better-wp-db-error",
-            "version": "0.1",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devgeniem/better-wp-db-error.git",
-                "reference": "8baa6fccbf3512bf8c670daa1fbcf81adc0f57d3"
+                "reference": "ca609b23285afca4b131b171fc89d019a6fe78af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devgeniem/better-wp-db-error/zipball/8baa6fccbf3512bf8c670daa1fbcf81adc0f57d3",
-                "reference": "8baa6fccbf3512bf8c670daa1fbcf81adc0f57d3",
+                "url": "https://api.github.com/repos/devgeniem/better-wp-db-error/zipball/ca609b23285afca4b131b171fc89d019a6fe78af",
+                "reference": "ca609b23285afca4b131b171fc89d019a6fe78af",
                 "shasum": ""
             },
             "require": {
@@ -132,7 +132,52 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2016-07-08 08:25:03"
+            "time": "2016-07-11 09:18:14"
+        },
+        {
+            "name": "devgeniem/better-wp-install-dropin",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devgeniem/better-wp-install-dropin.git",
+                "reference": "63a0234779c48e8899a669588c974ebc45ecbe9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devgeniem/better-wp-install-dropin/zipball/63a0234779c48e8899a669588c974ebc45ecbe9c",
+                "reference": "63a0234779c48e8899a669588c974ebc45ecbe9c",
+                "shasum": ""
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": "^1.0",
+                "php": ">=5.6"
+            },
+            "suggest": {
+                "oscarotero/env": "^1.0"
+            },
+            "type": "wordpress-dropin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Onni Hakala",
+                    "email": "onni.hakala@geniem.com",
+                    "homepage": "https://github.com/onnimonni",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Better WordPress installer.php dropin.",
+            "homepage": "https://github.com/devgeniem/better-wp-installer-dropin",
+            "keywords": [
+                "clean",
+                "dropin",
+                "installer",
+                "wordpress",
+                "wp"
+            ],
+            "time": "2016-07-12 12:29:19"
         },
         {
             "name": "devgeniem/wp-sanitize-accented-uploads",
@@ -285,16 +330,16 @@
         },
         {
             "name": "koodimonni/composer-dropin-installer",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
-                "reference": "717d992bccb9e5b1fded44136333704d4e61a4ae"
+                "reference": "1903a3a1e981a783618aad9e322a12ad39ad1760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/717d992bccb9e5b1fded44136333704d4e61a4ae",
-                "reference": "717d992bccb9e5b1fded44136333704d4e61a4ae",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/1903a3a1e981a783618aad9e322a12ad39ad1760",
+                "reference": "1903a3a1e981a783618aad9e322a12ad39ad1760",
                 "shasum": ""
             },
             "require": {
@@ -323,7 +368,7 @@
                 }
             ],
             "description": "Do what the fuck you want with your composer packages aka. Composer Dropin installer. Install packages or part of packages into custom paths without overwriting existing stuff.",
-            "time": "2015-06-11 14:15:20"
+            "time": "2016-07-11 09:21:59"
         },
         {
             "name": "oscarotero/env",

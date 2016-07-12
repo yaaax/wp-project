@@ -36,7 +36,7 @@
   ],
   "require": {
     "php": ">=5.3.2",
-    "johnpbloch/wordpress": "*",
+    "johnpbloch/wordpress": ">=4.5.0",
     "vlucas/phpdotenv": "^2.0.1",
     "oscarotero/env": "^1.0",
     "composer/installers": "v1.0.12",
@@ -45,6 +45,8 @@
     "koodimonni-language/core-fi": "*",
 
     "devgeniem/better-wp-db-error": ">=0.1",
+    "devgeniem/better-wp-install-dropin": ">=1.0",
+
     "devgeniem/wp-sanitize-accented-uploads": ">=1.0.7",
 
     "robmorgan/phinx": "^0.5.3"
