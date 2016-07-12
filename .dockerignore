@@ -56,3 +56,10 @@ vendor/koodimonni/composer-dropin-installer
 # Ignore dropin folders
 vendor/koodimonni-language
 vendor/devgeniem/better-wp-db-error
+
+# Ignore Tests and meta files from composer packages
+vendor/*/*/Tests
+vendor/*/*/tests
+vendor/*/*/.travis.yml
+vendor/*/*/composer.json
+vendor/*/*/phpunit.xml*
