@@ -2,6 +2,13 @@
 # This file is used in build phase after passing tests in Drone CI
 ##
 
+# Ignore files which may accidentally be added into git
+.idea
+.DS_store
+.vcs
+.wp-cli
+.mysql_history
+
 # We don't need tests in passing builds
 tests
 phpcs.xml
@@ -26,7 +33,26 @@ Dockerfile
 # Git is not needed after deploy
 .git
 .gitignore
+*/.gitignore
+*/*/.gitignore
+
+.gitkeep
+*/.gitkeep
+*/*/.gitkeep
+*/*/*/.gitkeep
+
+# Ignore wp-core content
+web/app/wp/wp-content/*
 
 # Composer is not needed after the image is builded
 composer.lock
 composer.json
+
+# Ignore composer installer helpers
+vendor/composer/installers
+vendor/johnpbloch/wordpress-core-installer
+vendor/koodimonni/composer-dropin-installer
+
+# Ignore dropin folders
+vendor/koodimonni-language
+vendor/devgeniem/better-wp-db-error
