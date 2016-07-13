@@ -23,7 +23,7 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
     * For now this project only includes `phpcs.xml` for php codesniffer Geniem Coding Standards.
     * This ruleset is here to help and make the developer to think about possible vulnerabilities.
     * When something doesn't fit into the ruleset you can ask for a code review and add comments to ignore certain line:
-    ```
+    ```php
     // @codingStandardsIgnoreStart
     $query_string  = filter_var($_SERVER['QUERY_STRING'], FILTER_SANITIZE_STRING)
     // @codingStandardsIgnoreEnd
