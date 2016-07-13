@@ -119,6 +119,9 @@
     -->
     <exclude name="WordPress.VIP.ValidatedSanitizedInput.MissingUnslash" />
     <exclude name="WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized" />
+    
+    <!-- This project doesnt use wordpress.com functions -->
+    <exclude name="WordPress.VIP.RestrictedFunctions.get_term_link" />
 
     <!-- Exclude indentation rules and use PEAR.WhiteSpace.ScopeIndent instead -->
     <exclude name="Generic.WhiteSpace.ScopeIndent" />
