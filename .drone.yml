@@ -53,6 +53,8 @@ build:
     - mkdir -p /var/www
     - ln -s $PWD /var/www/project
 
+    - echo "127.0.0.1 wordpress.test" >> /etc/hosts
+
     # Run container init scripts and start services in background
     - /init >> /dev/null &
 
@@ -91,8 +93,6 @@ build:
     DB_PASSWORD: wordpress
 
     SMTP_FROM: no-reply@wordpress.test
-  extra_hosts:
-      - "wordpress.test:127.0.0.1"
 
 cache:
   mount:
@@ -120,7 +120,7 @@ publish:
     access_key: "$$AWS_ACCESS_KEY"
     secret_key: "$$AWS_SECRET_KEY"
     region: eu-west-1
-    repo: sok-blogit/PROJECTNAME
+    repo: devgeniem/PROJECTNAME
     tag: master
     file: Dockerfile
     storage_driver: vfs
@@ -134,7 +134,7 @@ publish:
     access_key: "$$AWS_ACCESS_KEY"
     secret_key: "$$AWS_SECRET_KEY"
     region: eu-west-1
-    repo: sok-blogit/PROJECTNAME
+    repo: devgeniem/PROJECTNAME
     tag: stable
     file: Dockerfile
     storage_driver: vfs
