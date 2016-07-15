@@ -19,8 +19,13 @@ before_install:
   - phpenv config-rm xdebug.ini
   - composer self-update
 
+  # Install phpcs
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
+
 script:
   # Check project with php codesniffer
   - phpcs --standard=./phpcs.xml -n -p --report=summary .
+
   # Check that composer is valid and installs correctly
   - composer install -o --prefer-dist --no-interaction
