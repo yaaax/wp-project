@@ -40,15 +40,15 @@ if ( file_exists( $env_config ) ) {
  * We can always just use nginx to redirect aliases to canonical url
  * This helps changing between dev->stage->production
  */
-if ( defined('WP_HOME') ) {
+if ( defined( 'WP_HOME' ) ) {
     define( 'WP_HOME', env( 'WP_HOME' ) );
-} elseif ( defined( 'REQUEST_SCHEME') and defined( 'HTTP_HOST' ) ) {
+} elseif ( defined( 'REQUEST_SCHEME' ) and defined( 'HTTP_HOST' ) ) {
     define( 'WP_HOME', env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
 }
 
-if ( defined( 'WP_SITEURL') ) {
+if ( defined( 'WP_SITEURL' ) ) {
     define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
-} elseif ( defined( 'REQUEST_SCHEME') and defined( 'HTTP_HOST' ) ) {
+} elseif ( defined( 'REQUEST_SCHEME' ) and defined( 'HTTP_HOST' ) ) {
     define( 'WP_SITEURL', env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
 }
 
@@ -104,14 +104,17 @@ define( 'FS_METHOD', 'direct' );
  * Note: this is only tested in single site installation
  * Uses: web/app/mu-plugins/moved-uploads.php
  */
-define( 'WP_UPLOADS_DIR', env( 'WP_UPLOADS_DIR' ) ? env( 'WP_UPLOADS_DIR' ) : '/data/uploads' );
-define( 'WP_UPLOADS_URL', env( 'WP_UPLOADS_URL' ) ? env( 'WP_UPLOADS_URL' ) : WP_HOME . '/uploads' );
+define( 'WP_UPLOADS_DIR', env( 'WP_UPLOADS_DIR' ) ?: '/data/uploads' );
+define( 'WP_UPLOADS_URL', env( 'WP_UPLOADS_URL' ) ?: WP_HOME . '/uploads' );
 
 /**
  * Select default theme which is activated during project startup
+ * Use this when the project has default theme to use.
  */
-// Use this when the project has default theme to use
-//define('WP_DEFAULT_THEME','THEMENAME');
+
+// @codingStandardsIgnoreStart
+//define( 'WP_DEFAULT_THEME' ,'THEMENAME' );
+// @codingStandardsIgnoreEnd
 
 /**
  * Define newsletter plugin logging into php logging directory
