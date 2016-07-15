@@ -8,7 +8,8 @@
  * License:      MIT License
  */
 
-if (!is_blog_installed()) { return; }
+// Skip if blog is not installed.
+if ( ! is_blog_installed() ) { return; }
 
 /**
  * This helps CI to automatically enable the right theme after installation
