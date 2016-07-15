@@ -55,9 +55,6 @@ build:
 
     - echo "127.0.0.1 wordpress.test" >> /etc/hosts
 
-    # Run container init scripts and start services in background
-    - /init >> /dev/null &
-
     # Enforce coding practises by style checks
     - ./scripts/code-style.sh
 
