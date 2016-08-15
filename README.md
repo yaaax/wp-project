@@ -14,13 +14,14 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 - Includes phantomjs tests through rspec for doing integration testing. Source: [Seravo/wordpress](https://github.com/Seravo/wordpress).
 
 ## Workflow for WP projects
-1. Replace all `THEMENAME` and `PROJECTNAME` references from your project to your project name.
+1. Replace all `THEMENAME` and `PROJECTNAME` references from project to your project name.
     * These can be for example: `ClientName` and `client-name`
-2. Add project participants into `composer.json` `authors` and rename the project `devgeniem/wp-project`->`devgeniem/client`.
+2. Change project test address in `docker-compose.yml` for example `wordpress.test` -> `client-name.test`
+3. Add project participants into `composer.json` `authors` and rename the project `devgeniem/wp-project`->`devgeniem/client`.
     * You can also add project managers, designers and other developers here.
     * This is important so that we always have accountable people to advise with the project later on when it eventually might turn to more legacy project.
-3. Setup minimun viable content seed in phinx seeds so that CI can reliably do the tests.
-4. Use included linters for the code style and best practises
+4. Setup minimun viable content seed in phinx seeds so that CI can reliably do the tests.
+5. Use included linters for the code style and best practises
     * For now this project only includes `phpcs.xml` for php codesniffer Geniem Coding Standards.
     * This ruleset is here to help and make the developer to think about possible vulnerabilities.
     * When something doesn't fit into the ruleset you can ask for a code review and add comments to ignore certain line:
@@ -29,15 +30,17 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
     $query_string  = filter_var($_SERVER['QUERY_STRING'], FILTER_SANITIZE_STRING)
     // @codingStandardsIgnoreEnd
     ```
-5. Add more `rspec` or `phpunit` tests while you continue to add features to your site.
+6. Add more `rspec` or `phpunit` tests while you continue to add features to your site.
     * This helps us to avoid regressions and will enable more agile refactoring of the code when needed.
-6. Try to update this Readme as many times as you can.
+7. Try to update this Readme as many times as you can.
     * Most important details are usually the details about data models and their input/output.
     * Also add all 3rd-party dependencies here
 
 ## Start local development
-This project includes example `docker-compose.yml` which you can use to develop locally.
+This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use []()
 
 ```
-$ docker-compose up -d
+$ gdev up
 ```
+
+Open the url you provided in step 2 for example: `client-name.test` and start developing the site.
