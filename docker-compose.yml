@@ -3,10 +3,24 @@
 ##
 #frontend:
 #  image: devgeniem/node-assets-builder
-#  volumes:
-#    - ./web/app/themes/THEMENAME/:/build
-#  command: /bin/bash -c "npm install && ./node_modules/webpack/bin/webpack.js"
+#  volumes_from:
+#    - data
+#  command: /bin/bash -c "cd /var/www/project/web/app/themes/THEMENAME && npm install && ./node_modules/webpack/bin/webpack.js"
 
+##
+# Docker for Mac is super slow for the filesync, So we'll use unison instead
+##
+data:
+  image: onnimonni/unison:2.48.4
+  environment:
+    UNISON_DIR: /var/www/project
+    UNISON_UID: 1000
+    UNISON_GID: 1001
+  volumes:
+    - /var/www/project
+  ports:
+    - "5000"
+  hostname: "data-container"
 ##
 # Web Server which runs nginx+php
 ##
@@ -17,9 +31,9 @@ web:
   links:
     - db
     - redis
+  volumes_from:
+    - data
   volumes:
-    - .:/var/www/project
-    - ./.docker/log:/var/log
     # In production uploads will be in /data/uploads/
     # This way let the container see them like in production
     - ./.docker/uploads:/var/www/uploads
@@ -28,6 +42,9 @@ web:
     # Don't use this in your code unless this is only option
     # We want to nearly identical codebase in production and development
     WP_ENV: development
+
+    WP_UID: 1000
+    WP_GID: 1001
 
     # Set php to use redis for object cache & sessions
     PHP_SESSION_HANDLER: redis
@@ -59,8 +76,8 @@ backend:
     - db
     - redis
     - web
-  volumes:
-    - .:/var/www/project
+  volumes_from:
+    - data
   # Run one time command to install composer and seed database
   command: /bin/bash -c "composer install; ./scripts/seed.sh"
   # Add siteurl into etc/hosts inside docker container to run the rspec tests correctly
