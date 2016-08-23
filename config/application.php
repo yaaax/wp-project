@@ -79,6 +79,8 @@ define( 'WP_REDIS_HOST', env( 'REDIS_HOST' ) ?: env( 'REDIS_PORT_6379_TCP_ADDR' 
 // Local enviroment uses REDIS_PORT=tcp://172.17.0.6:6379 and this fixes it.
 $redis_tmp_port = explode( ':', env( 'REDIS_PORT' ) );
 define( 'WP_REDIS_PORT', env( 'REDIS_PORT' ) ? intval( end( $redis_tmp_port ) ) : 6379 );
+unset($redis_tmp_port);
+
 define( 'WP_REDIS_PASSWORD', env( 'REDIS_PASSWORD' ) ?: '' );
 define( 'WP_REDIS_DATABASE', env( 'WP_REDIS_DATABASE' ) ?: '0' );
 define( 'WP_CACHE_KEY_SALT', env( 'WP_CACHE_KEY_SALT' ) ?: 'wp_' );
