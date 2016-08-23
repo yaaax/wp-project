@@ -40,7 +40,9 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use []()
 
 ```
+$ composer install
 $ gdev up
+$ gdev sync
 ```
 
 Open the url you provided in step 2 for example: `client-name.test` and start developing the site.
