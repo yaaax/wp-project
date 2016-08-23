@@ -6,22 +6,22 @@
 
 # Set defaults
 
-# This is for local development where DB_HOST is unknown beforehand
-if [ "$DB_HOST" == "" ] && [ "$DB_PORT_3306_TCP_ADDR" != "" ]; then
-  DB_HOST=$DB_PORT_3306_TCP_ADDR
+# This is for local development where MYSQL_HOST is unknown beforehand
+if [ "$MYSQL_HOST" == "" ] && [ "$DB_PORT_3306_TCP_ADDR" != "" ]; then
+  MYSQL_HOST=$DB_PORT_3306_TCP_ADDR
 fi
 
 # Use default port if not defined
-if [ "$DB_PORT" == "" ]; then
-  DB_PORT="3306"
+if [ "$MYSQL_PORT" == "" ]; then
+  MYSQL_PORT="3306"
 fi
 
 # Wait until mysql is open
-nc -z $DB_HOST $DB_PORT
+nc -z $MYSQL_HOST $MYSQL_PORT
 if [[ $? != 0 ]] ; then
-  echo "Waiting mysql to open in $DB_HOST:$DB_PORT..."
+  echo "Waiting mysql to open in $MYSQL_HOST:$MYSQL_PORT..."
   declare -i i
-  while ! nc -z $DB_HOST $DB_PORT; do
+  while ! nc -z $MYSQL_HOST $MYSQL_PORT; do
     if [ "$i" == "15" ]; then
       echo "Error: Mysql process timeout"
       exit 1
