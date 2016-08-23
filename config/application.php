@@ -26,7 +26,7 @@ if ( file_exists( $root_dir . '/.env' ) ) {
  * Set up our global environment constant and load its config first
  * Default: development
  */
-define( 'WP_ENV', env( 'WP_ENV' ) ?: 'development' );
+define( 'WP_ENV', strtolower( env( 'WP_ENV' ) ) ?: 'development' );
 
 $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 
@@ -75,7 +75,7 @@ $table_prefix = env( 'DB_PREFIX' ) ?: 'wp_';
  * Use redis for object cache
  */
 define( 'WP_REDIS_CLIENT', env( 'WP_REDIS_CLIENT' ) );
-define( 'WP_REDIS_HOST', env( 'WP_REDIS_HOST' ) ?: env( 'REDIS_PORT_6379_TCP_ADDR' ) );
+define('WP_REDIS_PORT', env( 'REDIS_PORT' ) ? intval( @end( explode( ':', env( 'REDIS_PORT' ) ) ) ) : 6379 );
 define( 'WP_REDIS_DATABASE', env( 'WP_REDIS_DATABASE' ) ?: '0' );
 define( 'WP_CACHE_KEY_SALT', env( 'WP_CACHE_KEY_SALT' ) ?: 'wp_' );
 
