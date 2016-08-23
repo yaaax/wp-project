@@ -60,13 +60,13 @@ define( 'WP_CONTENT_DIR', $webroot_dir . CONTENT_DIR );
 define( 'WP_CONTENT_URL', WP_HOME . CONTENT_DIR );
 
 /**
- * DB settings - Use DB_NAME, DB_USER, DB_PASSWORD, DB_HOST first
+ * DB settings - Use MYSQL_DATABASE, MYSQL_USER, MYSQL_PWD, MYSQL_HOST first
  * but fallback to docker container links
  */
-define( 'DB_NAME', env( 'DB_NAME' ) ?: env( 'DB_ENV_MYSQL_PASSWORD' ) );
-define( 'DB_USER', env( 'DB_USER' ) ?: env( 'DB_ENV_MYSQL_USER' ) );
-define( 'DB_HOST', env( 'DB_HOST' ) ?: env( 'DB_PORT_3306_TCP_ADDR' ) );
-define( 'DB_PASSWORD', env( 'DB_PASSWORD' ) ?: env( 'DB_ENV_MYSQL_PASSWORD' ) );
+define( 'DB_NAME', env( 'MYSQL_DATABASE' ) ?: env( 'DB_ENV_MYSQL_PASSWORD' ) );
+define( 'DB_USER', env( 'MYSQL_USER' ) ?: env( 'DB_ENV_MYSQL_USER' ) );
+define( 'DB_HOST', env( 'MYSQL_HOST' ) ?: env( 'DB_PORT_3306_TCP_ADDR' ) );
+define( 'DB_PASSWORD', env( 'MYSQL_PWD' ) ?: env( 'DB_ENV_MYSQL_PASSWORD' ) );
 define( 'DB_CHARSET', env( 'DB_CHARSET' ) ?: 'utf8mb4' );
 define( 'DB_COLLATE', env( 'DB_COLLATE' ) ?: 'utf8mb4_swedish_ci' );
 $table_prefix = env( 'DB_PREFIX' ) ?: 'wp_';
