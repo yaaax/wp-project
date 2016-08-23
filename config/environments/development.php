@@ -23,3 +23,9 @@ if ( ! defined( 'WP_CLI' ) && class_exists( '\Whoops\Run' ) ) {
     $whoops->pushHandler( new \Whoops\Handler\PrettyPageHandler );
     $whoops->register();
 }
+
+/**
+ * Use object cache so that we don't have parity problems with production
+ * but only cache values for 1 second so that developers can be more productive
+ */
+define( 'WP_REDIS_MAXTTL', 1 );
