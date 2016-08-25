@@ -49,6 +49,7 @@
     "wpackagist-plugin/redis-cache": ">=1.3.2",
 
     "devgeniem/wp-sanitize-accented-uploads": ">=1.0.7",
+    "devgeniem/wp-core-blocker": ">=0.2.1",
 
     "robmorgan/phinx": "^0.5.3"
   },

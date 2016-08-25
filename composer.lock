@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8ad958cde9636a36080739dcce5b70bb",
-    "content-hash": "4195a704669b146c0b2ca19fedd2fa43",
+    "hash": "1abc02cae7d5a8bbbc7cb7a9bdc8652f",
+    "content-hash": "863ef512d4637b26599067266bb29407",
     "packages": [
         {
             "name": "composer/installers",
@@ -175,6 +175,38 @@
                 "wp"
             ],
             "time": "2016-08-03 21:18:20"
+        },
+        {
+            "name": "devgeniem/wp-core-blocker",
+            "version": "0.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devgeniem/wp-core-blocker.git",
+                "reference": "319a9bbf6f2606e19cb5adf8c47cc980725e0198"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devgeniem/wp-core-blocker/zipball/319a9bbf6f2606e19cb5adf8c47cc980725e0198",
+                "reference": "319a9bbf6f2606e19cb5adf8c47cc980725e0198",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-muplugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Onni Hakala",
+                    "homepage": "https://github.com/onnimonni",
+                    "role": "developer"
+                }
+            ],
+            "description": "Disables WP from contacting wp.org servers and disables users from installing anything in wp-admin.",
+            "time": "2016-08-25 22:08:47"
         },
         {
             "name": "devgeniem/wp-sanitize-accented-uploads",
@@ -801,7 +833,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/redis-cache.1.3.3.zip",
-                "reference": null,
+                "reference": "tags/1.3.3",
                 "shasum": null
             },
             "require": {
