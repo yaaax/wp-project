@@ -33,6 +33,6 @@ define( 'WP_REDIS_MAXTTL', 1 );
 /**
  * Use elasticsearch from local linked docker container
  */
-if ( env('ELASTICSEARCH_1_PORT_9200_TCP') ) {
-    define( 'EP_HOST', str_replace("tcp://", "http://", env('ELASTICSEARCH_1_PORT_9200_TCP') ) );
+if ( env( 'ELASTICSEARCH_1_PORT_9200_TCP' ) ) {
+    define( 'EP_HOST', str_replace( 'tcp://', 'http://', env('ELASTICSEARCH_1_PORT_9200_TCP') ) );
 }
