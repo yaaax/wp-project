@@ -29,3 +29,10 @@ if ( ! defined( 'WP_CLI' ) && class_exists( '\Whoops\Run' ) ) {
  * but only cache values for 1 second so that developers can be more productive
  */
 define( 'WP_REDIS_MAXTTL', 1 );
+
+/**
+ * Use elasticsearch from local linked docker container
+ */
+if ( env('ELASTICSEARCH_1_PORT_9200_TCP') ) {
+    define( 'EP_HOST', str_replace("tcp://", "http://", env('ELASTICSEARCH_1_PORT_9200_TCP') ) );
+}

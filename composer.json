@@ -51,7 +51,8 @@
     "devgeniem/wp-sanitize-accented-uploads": ">=1.0.7",
     "devgeniem/wp-core-blocker": ">=0.2.1",
 
-    "robmorgan/phinx": "^0.5.3"
+    "robmorgan/phinx": "^0.5.3",
+    "10up/elasticpress": "^2.0"
   },
   "require-dev": {
     "rarst/wps": ">=1.0.0"

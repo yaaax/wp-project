@@ -4,9 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1abc02cae7d5a8bbbc7cb7a9bdc8652f",
-    "content-hash": "863ef512d4637b26599067266bb29407",
+    "hash": "120569c8b83b7580de17430fbc66db91",
+    "content-hash": "4dffb5a223658fbeff4d211f7b338d86",
     "packages": [
+        {
+            "name": "10up/elasticpress",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/10up/ElasticPress.git",
+                "reference": "c41d8968dbcdb915be03bafe2b989ac8b12371d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/10up/ElasticPress/zipball/c41d8968dbcdb915be03bafe2b989ac8b12371d4",
+                "reference": "c41d8968dbcdb915be03bafe2b989ac8b12371d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpunit/phpunit": "*@stable",
+                "wp-cli/wp-cli": "*@stable"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Holbrook",
+                    "email": "aaron@10up.com",
+                    "homepage": "http://aaronjholbrook.com"
+                },
+                {
+                    "name": "10up",
+                    "homepage": "http://10up.com"
+                },
+                {
+                    "name": "Taylor Lovett",
+                    "email": "taylorl@get10up.com"
+                }
+            ],
+            "description": "Integrate Elasticsearch with WordPress.",
+            "keywords": [
+                "elasticpress",
+                "elasticsearch",
+                "plugin",
+                "search",
+                "wordpress"
+            ],
+            "time": "2016-08-02 16:52:13"
+        },
         {
             "name": "composer/installers",
             "version": "v1.0.12",
@@ -443,16 +495,16 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "v0.5.5.1",
+            "version": "v0.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robmorgan/phinx.git",
-                "reference": "809d403eaee5583efe48b0f24d3ff8f1d893e1a0"
+                "reference": "da9950a5e5b9314ebf72ddc6317ed587ce9ba8dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/809d403eaee5583efe48b0f24d3ff8f1d893e1a0",
-                "reference": "809d403eaee5583efe48b0f24d3ff8f1d893e1a0",
+                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/da9950a5e5b9314ebf72ddc6317ed587ce9ba8dc",
+                "reference": "da9950a5e5b9314ebf72ddc6317ed587ce9ba8dc",
                 "shasum": ""
             },
             "require": {
@@ -500,7 +552,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2016-06-17 15:51:03"
+            "time": "2016-06-17 15:29:02"
         },
         {
             "name": "symfony/config",

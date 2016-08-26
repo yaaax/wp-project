@@ -45,11 +45,15 @@ echo "Starting to import database seed..."
 ##
 if [ "$WP_ENV" = "production" ] || [ "$WP_ENV" = "staging" ]; then
 
-  # Don't use seed data in production yet
-  echo "Production/Staging don't use seed data at the moment"
+    # Don't use seed data in production yet
+    echo "Production/Staging don't use seed data at the moment"
 
 elif [ "$WP_ENV" = "development" ] || [ "$WP_ENV" = "testing" ]; then
 
-  phinx seed:run -q
+    # Run migrations from phinx
+    phinx seed:run -q
+
+    # Index content in elasticpress
+    wp elasticpress index --setup
 
 fi
