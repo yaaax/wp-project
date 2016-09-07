@@ -110,7 +110,7 @@ define( 'FS_METHOD', 'direct' );
  * Note: this is only tested in single site installation
  * Uses: web/app/mu-plugins/moved-uploads.php
  */
-define( 'WP_UPLOADS_DIR', env( 'WP_UPLOADS_DIR' ) ?: '/data/uploads' );
+define( 'WP_UPLOADS_DIR', env( 'WP_UPLOADS_DIR' ) ?: '/var/www/uploads' );
 define( 'WP_UPLOADS_URL', env( 'WP_UPLOADS_URL' ) ?: WP_HOME . '/uploads' );
 
 /**
