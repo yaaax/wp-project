@@ -20,7 +20,6 @@ data:
     - /var/www/project
   ports:
     - "5000"
-  hostname: "data-container"
 
 ##
 # Web Server which runs nginx+php
@@ -69,7 +68,7 @@ web:
     SMTP_FROM: no-reply@wordpress.test
 
 ##
-# PHP builder which install composer packages and wordpress database
+# PHP builder which installs composer packages and wordpress database
 # - This can be used for testing the project and running wp-cli commands
 ##
 backend:
