@@ -135,13 +135,6 @@ define( 'NEWSLETTER_LOG_DIR', dirname( ini_get( 'error_log' ) ) . '/newsletter/'
 define( 'PLL_COOKIE', false );
 
 /**
- * Always log errors
- */
-ini_set( 'log_errors', 'On' );
-
-
-
-/**
  * Bootstrap WordPress
  */
 if ( ! defined( 'ABSPATH' ) ) {
