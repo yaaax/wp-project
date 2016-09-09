@@ -26,7 +26,7 @@ before_install:
 
 script:
   # Check project with php codesniffer
-  - ~/wpcs/vendor/bin/phpcs --standard=./phpcs.xml -n -p --report=summary .
+  - ~/wpcs/vendor/bin/phpcs --standard=./phpcs.xml -n -p .
 
   # Check that composer is valid and installs correctly
   - composer install -o --prefer-dist --no-interaction
