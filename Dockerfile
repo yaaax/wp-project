@@ -40,7 +40,8 @@ COPY nginx /var/www/project/nginx
 ## Install application config
 COPY config/*.php /var/www/project/config/
 ## Install only the config that we want for the image and nothing else
-COPY config/environments/${WP_ENV}.php /var/www/project/config/environments/
+COPY config/environments/staging.php /var/www/project/config/environments/
+COPY config/environments/production.php /var/www/project/config/environments/
 ## Install vendor
 COPY vendor /var/www/project/vendor
 ## Install cronjobs
