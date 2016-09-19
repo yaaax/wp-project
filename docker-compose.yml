@@ -62,10 +62,10 @@ web:
     WP_SITEURL: https://wordpress.test
     WP_HOME: https://wordpress.test
 
-    DB_NAME: wordpress
-    DB_USER: wordpress
-    DB_PASSWORD: wordpress
+    # Mail settings
     SMTP_FROM: no-reply@wordpress.test
+    # This will use local mail.test server
+    SMTP_HOST: 172.17.0.1
 
 ##
 # PHP builder which installs composer packages and wordpress database
