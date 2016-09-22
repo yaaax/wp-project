@@ -62,6 +62,11 @@ web:
     WP_SITEURL: https://wordpress.test
     WP_HOME: https://wordpress.test
 
+    # Mysql details
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: wordpress
+
     # Mail settings
     SMTP_FROM: no-reply@wordpress.test
     # This will use local mail.test server
