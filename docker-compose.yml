@@ -65,7 +65,7 @@ web:
     # Mysql details
     MYSQL_DATABASE: wordpress
     MYSQL_USER: wordpress
-    MYSQL_PASSWORD: wordpress
+    MYSQL_PWD: wordpress
 
     # Mail settings
     SMTP_FROM: no-reply@wordpress.test
