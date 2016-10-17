@@ -41,7 +41,7 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use [gdev](https://github.com/devgeniem/gdev).
 
 ```
-# Install php dependencies and wp plugins
+# Install php dependencies and wp plugins (run in project root directory only!!!)
 $ composer install
 
 # Start development environment
