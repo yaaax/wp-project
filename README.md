@@ -48,7 +48,7 @@ $ composer install
 $ gdev up
 
 # Install seed data to local database
-$ gdev run web ./scripts/seed.sh
+$ gdev exec ./scripts/seed.sh
 
 # Start filesync daemon ( This fixes slow filesystem with Docker for Mac )
 $ gdev sync
