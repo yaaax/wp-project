@@ -41,14 +41,14 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use [gdev](https://github.com/devgeniem/gdev).
 
 ```
-# Install php dependencies and wp plugins
+# Install php dependencies and wp plugins (run in project root directory only!!!)
 $ composer install
 
 # Start development environment
 $ gdev up
 
 # Install seed data to local database
-$ gdev run web ./scripts/seed.sh
+$ gdev exec ./scripts/seed.sh
 
 # Start filesync daemon ( This fixes slow filesystem with Docker for Mac )
 $ gdev sync
