@@ -16,8 +16,8 @@ function geniem_hide_non_production_robots( string $output, bool $public ) {
     // Don't do anything if blog is already hidden
     if ( ! $public ) { return $output; }
 
-    // Hide all non production sites.
-    if ( defined( 'WP_ENV' ) && WP_ENV !== 'production' ) {
+    // Hide all non production sites and all sites under geniem.io
+    if ( defined( 'WP_ENV' ) && WP_ENV !== 'production' || strpos($_SERVER[ 'HTTP_HOST' ],'geniem.io') !== false ) {
         $output = "User-agent: *\n";
         $output .= "Disallow: /\n";
     }
