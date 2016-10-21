@@ -97,7 +97,7 @@ unset( $redis_tmp_port );
 
 define( 'WP_REDIS_PASSWORD', env( 'REDIS_PASSWORD' ) ?: '' );
 define( 'WP_REDIS_DATABASE', env( 'WP_REDIS_DATABASE' ) ?: '0' );
-define( 'WP_CACHE_KEY_SALT', env( 'WP_CACHE_KEY_SALT' ) ?: 'wp_' );
+define( 'WP_CACHE_KEY_SALT', env( 'WP_CACHE_KEY_SALT' ) ?: '' );
 
 /**
  * Authentication Unique Keys and Salts
