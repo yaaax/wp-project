@@ -1,25 +1,18 @@
 ##
-# Nodejs container which installs and builds all frontend assets
-##
-#frontend:
-#  image: devgeniem/node-assets-builder
-#  volumes_from:
-#    - data
-#  command: /bin/bash -c "cd /var/www/project/web/app/themes/THEMENAME && npm install && ./node_modules/webpack/bin/webpack.js"
-
-##
 # Docker for Mac is super slow for the filesync, So we'll use unison instead
 ##
-data:
-  image: onnimonni/unison:2.48.4
-  environment:
-    UNISON_DIR: /var/www/project
-    UNISON_UID: 1000
-    UNISON_GID: 1001
+sync:
+  image: devgeniem/bg-sync
   volumes:
-    - /var/www/project
-  ports:
-    - "5000"
+    - .:/source
+  volumes_from:
+    - web
+  environment:
+    SYNC_DESTINATION: '/var/www/project'
+    SYNC_MAX_INOTIFY_WATCHES: '40000'
+    SYNC_VERBOSE: '0'
+    SYNC_EXTRA_UNISON_PROFILE_OPTS: 'ignore = Name {.docker}'
+  privileged: true
 
 ##
 # Web Server which runs nginx+php
@@ -35,6 +28,12 @@ web:
   volumes_from:
     - data
   volumes:
+    # Sync files into this path with sync container
+    - /var/www/project
+
+    # Use volume for xdebug trace and profiling so we can use analysing in other containers
+    - /tmp/xdebug
+
     # In production uploads will be in /data/uploads/
     # This way let the container see them like in production
     - ./.docker/uploads:/var/www/uploads
@@ -71,24 +70,6 @@ web:
     SMTP_FROM: no-reply@wordpress.test
     # This will use local mail.test server
     SMTP_HOST: 172.17.0.1
-
-##
-# PHP builder which installs composer packages and wordpress database
-# - This can be used for testing the project and running wp-cli commands
-##
-backend:
-  image: devgeniem/wordpress-project-builder
-  links:
-    - db
-    - redis
-    - web
-  volumes_from:
-    - data
-  # Run one time command to install composer and seed database
-  command: /bin/bash -c "./scripts/install.sh; ./scripts/seed.sh"
-  # Add siteurl into etc/hosts inside docker container to run the rspec tests correctly
-  extra_hosts:
-    - "wordpress.test:172.17.0.1"
 
 ##
 # Use basic mariadb container for database
