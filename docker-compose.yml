@@ -18,15 +18,13 @@ sync:
 # Web Server which runs nginx+php
 ##
 web:
-  image: devgeniem/wordpress-development-server
+  image: devgeniem/wordpress-development-server:debian-php7.0
   ports:
-    - 80
+    - 8080
   links:
     - db
     - redis
     - elasticsearch
-  volumes_from:
-    - data
   volumes:
     # Sync files into this path with sync container
     - /var/www/project
@@ -49,22 +47,28 @@ web:
     # Set php to use redis for object cache & sessions
     PHP_SESSION_HANDLER: redis
     PHP_SESSION_REDIS_DB: 0
-    WP_REDIS_DATABASE: 1
+
+    # Use same caching solution as in production but only for a really small time
+    NGINX_REDIS_CACHE_TTL_DEFAULT: "1s"
 
     # These will be mapped automatically in development to jwilder/nginx-proxy
-    VIRTUAL_HOST:  wordpress.test
+    VIRTUAL_HOST: wordpress.test
+    VIRTUAL_PORT: 8080
 
     # This creates https certificate automatically when using gdev
     HTTPS_HOST: wordpress.test
 
-    # Set project WP_SITEURL & HOME
-    WP_SITEURL: https://wordpress.test
-    WP_HOME: https://wordpress.test
+    # Set project WP_SITEURL & WP_HOME from SERVER_NAME too
+    SERVER_NAME: wordpress.test
 
     # Mysql details
     MYSQL_DATABASE: wordpress
     MYSQL_USER: wordpress
     MYSQL_PWD: wordpress
+
+    # Xdebug profiling is disabled because it slows down development
+    # If you want to profile this site turn it on and use ?XDEBUG_PROFILE get parameteter or cookie
+    XDEBUG_ENABLE_PROFILE: 0
 
     # Mail settings
     SMTP_FROM: no-reply@wordpress.test
