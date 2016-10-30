@@ -45,25 +45,20 @@ if ( file_exists( $env_config ) ) {
  * This helps changing between dev->stage->production
  */
 if ( env( 'WP_HOME' ) and env( 'WP_SITEURL' ) ) {
-    define( 'WP_HOME',      env( 'WP_HOME' ) );
-    define( 'WP_SITEURL',   env( 'WP_SITEURL' ) );
+    define( 'WP_HOME', env( 'WP_HOME' ) );
+    define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
 } elseif ( env( 'SERVER_NAME' ) ) {
-
     // Use provided scheme when possible but use https as default fallback
     if ( defined( 'REQUEST_SCHEME' ) ) {
-        define( 'WP_HOME',      REQUEST_SCHEME . '://' . env( 'SERVER_NAME' ) );
-        define( 'WP_SITEURL',   REQUEST_SCHEME . '://' . env( 'SERVER_NAME' ) );
+        define( 'WP_HOME', REQUEST_SCHEME . '://' . env( 'SERVER_NAME' ) );
+        define( 'WP_SITEURL', REQUEST_SCHEME . '://' . env( 'SERVER_NAME' ) );
     } else {
-        define( 'WP_HOME',      'https://' . env( 'SERVER_NAME' ) );
-        define( 'WP_SITEURL',   'https://' . env( 'SERVER_NAME' ) );
+        define( 'WP_HOME', 'https://' . env( 'SERVER_NAME' ) );
+        define( 'WP_SITEURL', 'https://' . env( 'SERVER_NAME' ) );
     }
-
 } elseif ( defined( 'REQUEST_SCHEME' ) and defined( 'HTTP_HOST' ) ) {
     define( 'WP_HOME', env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
     define( 'WP_SITEURL', env( 'REQUEST_SCHEME' ) . '://' . env( 'HTTP_HOST' ) );
-} elseif ( env( 'WP_HOME' ) and env( 'WP_SITEURL' ) ) {
-    define( 'WP_HOME',      env( 'WP_HOME' ) );
-    define( 'WP_SITEURL',   env( 'WP_SITEURL' ) );
 }
 
 /**
