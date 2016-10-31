@@ -103,3 +103,16 @@ elasticsearch:
 ##
 redis:
   image: redis
+
+##
+# Container for analyzing xdebug profiling
+# For Example: use yoursite.test/?XDEBUG_PROFILE to profile the front page
+##
+webgrind:
+  image: devgeniem/webgrind
+  ports:
+    - 80
+  volumes_from:
+    - web
+  environment:
+    VIRTUAL_HOST: webgrind.wordpress.test
