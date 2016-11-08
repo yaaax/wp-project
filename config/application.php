@@ -138,6 +138,13 @@ define( 'WP_DEFAULT_THEME', 'THEMENAME' );
 define( 'WP_NO_ADMIN_AJAX_URL', '/ajax/' );
 
 /**
+ * Only keep the last 30 revisions of a post. Having hundreds of revisions of
+ * each post might cause sites to slow down, sometimes significantly due to a
+ * massive, and usually unecessary bloating the wp_posts and wp_postmeta tables.
+ */
+define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?: 30 );
+
+/**
  * Define newsletter plugin logging into php logging directory
  * Uses: https://wordpress.org/plugins/newsletter/
  */
