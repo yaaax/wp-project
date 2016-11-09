@@ -49,7 +49,9 @@ web:
     PHP_SESSION_REDIS_DB: 0
 
     # Use same caching solution as in production but only for a really small time
-    NGINX_REDIS_CACHE_TTL_DEFAULT: "1s"
+    # Default value is 1 second
+    NGINX_REDIS_CACHE_TTL_DEFAULT: "1"
+    NGINX_REDIS_CACHE_TTL_MAX: "1"
 
     # These will be mapped automatically in development to jwilder/nginx-proxy
     VIRTUAL_HOST: wordpress.test
