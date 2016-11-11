@@ -1,5 +1,5 @@
 # This is for production docker image
-FROM devgeniem/wordpress-server:php7.0
+FROM devgeniem/wordpress-server:debian-php7.0
 
 # Use port 8080 for flynn/router
 ENV PORT=8080 \
@@ -14,10 +14,11 @@ ENV PORT=8080 \
 RUN     rm -f /etc/cont-init.d/00-maybe-symlink-root \
         rm -f /etc/cont-init.d/01-create-web-user \
     &&  rm -f /etc/cont-init.d/01-init-web \
-    &&  addgroup web -S -g $WP_GID \
-    &&  adduser wordpress -S -G web -u $WP_UID \
+    # Create new user
+    &&  addgroup --system --gid $WP_GID web \
+    &&  adduser --system --gid $WP_GID --uid $WP_UID wordpress  \
     # Give user write access to /var/www/uploads
-    &&  mkdir /var/www/uploads \
+    &&  mkdir -p /var/www/uploads \
     &&  chown wordpress:web -R /var/www/uploads
 
 ##
