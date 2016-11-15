@@ -9,6 +9,11 @@ sync:
     - web
   environment:
     SYNC_DESTINATION: '/var/www/project'
+    ##
+    # NOTE: If sync is not working try to raise SYNC_MAX_INOTIFY_WATCHES
+    # $ find . -type f | wc -l
+    # 48122
+    ##
     SYNC_MAX_INOTIFY_WATCHES: '40000'
     SYNC_VERBOSE: '0'
     SYNC_EXTRA_UNISON_PROFILE_OPTS: 'ignore = Name {.docker}'
