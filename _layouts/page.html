@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="page-header">
+      <div class="row">
+        <div class="col-md-7">
+          <h1>{{ page.title }}
+              {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
+          </h1>
+        </div>
+        <div class="col-md-5 edit-buttons">
+          {% include edit-buttons.html %}
+        </div>
+      </div>
+</div>
+
+{% if page.summary %}
+<div class="bs-callout bs-callout-primary">
+  <p><strong>Summary: </strong>{{ page.summary | newline_to_br | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+</div>
+{% endif %}
+
+{{ content }}

@@ -1,0 +1,325 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+
+// Imports
+@import "syntax";
+@import "bs-callout";
+
+// Highlight color
+//$highlight: rgb(25,157,213);
+$highlight: #ec5f72;
+//background: linear-gradient(to bottom right, #b10f22, #ec5f72);
+
+body {
+    font-weight: 400;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+a {
+    color: $highlight;
+}
+
+#content blockquote {
+    border-left-width: 25px;
+    border-left-color: $highlight;
+}
+
+pre, code {
+    border: none;
+    border-radius: 0;
+    background-color: #F3F3F3;
+    font-size: 0.85em;
+}
+
+pre {
+    font-size: 1em;
+}
+
+code {
+    color: inherit;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Hide placeholder on focus */
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+#header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+
+    a:hover {
+        text-decoration: none;
+    }
+    a {
+        font-size: 27px;
+        color: $highlight;
+        text-decoration: none;
+    }
+    .logo {
+        max-height: 40px;
+        margin-bottom: -5px;
+    }
+    small {
+        margin-left: 10px;
+    }
+}
+
+#search-container {
+    margin: 15px 0;
+    input {
+        width: 100%;
+        -webkit-user-select: text;
+        -khtml-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes slideInUp {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+}
+
+#search-results-box {
+
+    .search-header {
+        padding-bottom: 9px;
+        border-bottom: 1px solid #eee;
+    }
+    animation-name: slideInUp;
+    transition: 1s;
+    h1 {
+        padding-bottom: 5px;
+    }
+    display: inline-block;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+
+    #results-container {
+        padding: 20px;
+    }
+}
+
+#footer {
+    margin: 20px 0;
+    font-size: 0.85em;
+    color: #999;
+    text-align: center;
+}
+
+#content {
+    img {
+      max-width: 95%;
+    }
+    > .page-header:first-child {
+        margin-top: 0;
+    }
+
+    > .page-header:first-child h2 {
+        margin-top: 0;
+    }
+
+    > .page-header .edit-buttons a {
+        margin-left: 10px;
+    }
+
+    p {
+        line-height: 1.75em;
+        font-size: 16px;
+
+        strong {
+            font-size: 17px;
+        }
+    }
+
+    h2, h3 {
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+    .bs-callout {
+        h2,h3,h4,h5 {
+            margin: 0px 0px 5px 0px;
+        }
+    }
+
+    h4 {
+       margin-top: 10px;
+       font-size: 19px;
+    }
+    .page-header {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .page-header h1 {
+        margin: 0;
+    }
+    blockquote {
+        @extend .bs-callout;
+        @extend .bs-callout-info;
+
+        /* Code blocks will be too big inside blockquotes */
+        pre code {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .pull-right-md {
+        float: right;
+    }
+    .pull-left-md {
+        float: left;
+    }
+}
+@media (max-width: 991px) {
+    .pull-right-sm {
+        float: left;
+    }
+    .pull-left-sm {
+        float: left;
+    }
+    .page-header .edit-buttons {
+        margin-top: 10px;
+    }
+
+    #search-results-box {
+        margin: auto;
+        width: 100%;
+    }
+}
+.edit-this-in-github {
+    min-width: 202px;
+}
+
+#navigation {
+    font-size: 0.9em;
+
+    ul {
+        list-style-type: none;
+        .divider {
+            border-bottom: 1px solid gray;
+            margin: 3px 0;
+        }
+        li a {
+            padding-left: 10px;
+            padding-right: 10px;
+
+            &:before {
+                position: relative;
+                display: inline-block;
+                content: " ";
+                top: -4px;
+                width: 6px;
+                height: 6px;
+                border-left: 1px solid #969696;
+                border-bottom: 1px solid #969696;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .nav-header {
+        font-size: 20px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/*
+ * Github edit button
+ */
+.button.edit.github {
+    margin-bottom: 10px;
+}
+
+/*
+ * Make things responsive for mobile
+ */
+@media(max-width:767px){
+    #header {
+        text-align: center;
+    }
+
+    #header .brand {
+        display: block;
+        margin: 20px 20px 10px 20px;
+    }
+}
+
+/*
+ * Only show something for desktop
+ */
+@media(max-width:1350px) {
+    .show-in-fullscreen {
+        display: none;
+    }
+}
+
+/*
+ * Tables
+ */
+
+#content {
+    table {
+            margin-bottom: 20px;
+            border-collapse:collapse;
+            font-family: 'Lato', Calibri, Arial, sans-serif;
+            border: none;
+                    border-radius: 3px;
+                   -webkit-border-radius: 3px;
+                   -moz-border-radius: 3px;
+        }
+    table th, table td {
+        box-shadow: inset 0 -1px rgba(0,0,0,0.25),
+            inset 0 1px rgba(0,0,0,0.25);
+    }
+    table th {
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        padding: 1em;
+        color: #f7f7f7;
+        text-shadow: 0 0 1px rgba(0,0,0,0.1);
+        font-size: 1.5em;
+    }
+    table td {
+        color: #f7f7f7;
+        padding: 0.7em 1em 0.7em 1.15em;
+        text-shadow: 0 0 1px rgba(255,255,255,0.1);
+        font-size: 1.4em;
+    }
+    table tr {
+        -webkit-transition: background 0.3s, box-shadow 0.3s;
+        -moz-transition: background 0.3s, box-shadow 0.3s;
+        transition: background 0.3s, box-shadow 0.3s;
+    }
+    table {
+        background: rgb(170,170,170);
+    }
+    table tr:hover {
+        background: rgba(0,0,0,0.19);
+    }
+
+    table code {
+      background: inherit;
+    }
+}
