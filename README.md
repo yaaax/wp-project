@@ -49,9 +49,6 @@ $ gdev up
 
 # Install seed data to local database
 $ gdev exec ./scripts/seed.sh
-
-# Start filesync daemon ( This fixes slow filesystem with Docker for Mac )
-$ gdev sync
 ```
 
 Open the url you provided in step 2 for example: `client-name.test` and start developing the site.
