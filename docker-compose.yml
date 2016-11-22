@@ -20,6 +20,25 @@ sync:
   privileged: true
 
 ##
+# This is used for running rspec tests included in ./tests/rspec/test.rb
+##
+test:
+  image: devgeniem/poltergeist
+  volumes_from:
+    - web
+  volumes:
+    - ${HOME}/.gdev/ca/ca.crt:/usr/local/share/ca-certificates/ca.crt:ro
+  environment:
+    WP_TEST_URL: https://wordpress.test
+
+    # Use these in local development and CI
+    WP_TEST_USER: admin
+    WP_TEST_USER_PASS: admin
+
+  dns:
+    - 10.254.254.254
+
+##
 # Web Server which runs nginx+php
 ##
 web:
