@@ -2,7 +2,10 @@
 # This file includes Rspec tests for WordPress
 ##
 
-# Use preconfigured poltergeist/phantomjs rules and load WP class
+# Check /sitemap.xml
+require 'sitemap-parser'
+
+# Use preconfigured poltergeist/phantomjs rules
 require_relative 'lib/config.rb'
 
 # Good list about Capybara commands can be found in: https://gist.github.com/zhengjia/428105
@@ -10,39 +13,78 @@ require_relative 'lib/config.rb'
 
 ### Begin tests ###
 
-describe "WordPress: #{WP.siteurl} - ", :type => :request, :js => true do
+describe "WordPress: #{WP.siteurl} -", :type => :request, :js => true do
 
   subject { page }
 
   describe "Frontpage" do
 
     before do
-      visit WP.siteurl('/')
+        visit WP.siteurl('/')
     end
 
     # 200 Means OK
-    it "should have healthy status code 200" do
-      expect(page).to have_status_of [200]
+    it "should have status code OK" do
+        expect(page).to have_status_of [200]
     end
 
     it "should include stylesheets" do
-      expect(page).to have_css
+        expect(page).to have_css
     end
 
     it "should includes javascript" do
-      expect(page).to have_js
+        expect(page).to have_js
+    end
+
+    it "shouldn't have 404 requests", :missing_assets do
+        expect(page).to_not have_missing_assets
+    end
+
+    if WP.https?
+        it "shouldn't have any mixed content errors", :mixed_content do
+            expect(page).to_not have_mixed_content
+        end
     end
 
   end
 
-  # Check that rss feed is working
-  describe "RSS-feed" do
+  # Check that RSS feed is working
+  describe "RSS-feed", :rss do
     before do
-      visit WP.siteurl('/?feed=rss2')
+        visit WP.siteurl('/?feed=rss2')
     end
 
-    it "should be valid rss and have link to itself" do
-      expect(page).to have_rss_link WP.siteurl('')
+    it "should have valid rss feed which contains link to itself" do
+        expect(page).to have_rss_link WP.siteurl('')
+    end
+  end
+
+  # Check that robots.txt is working
+  describe "robots.txt", :robots do
+    before do
+        visit WP.siteurl('/robots.txt')
+    end
+
+    it "should have status code OK" do
+        expect(page).to have_status_of [200]
+    end
+
+    it "shouldn't be empty" do
+        expect(page.body).not_to be_empty
+    end
+  end
+
+  # Check that we have valid Sitemaps
+  describe "Sitemaps", :sitemaps do
+    it "should have status code OK" do
+        visit WP.siteurl('/sitemap.xml')
+        expect(page).to have_status_of [200]
+    end
+
+    it "should contain at least one link" do
+        sitemaps = SitemapParser.new( WP.siteurl('/sitemap.xml'), {recurse: true} )
+        links = sitemaps.to_a
+        expect( links.size ).to be >= 1
     end
   end
 
@@ -53,23 +95,37 @@ describe "WordPress: #{WP.siteurl} - ", :type => :request, :js => true do
       visit WP.siteurl('/wp-login.php')
     end
 
-    it "has login form" do
+    it "has login form", :login do
+      expect(page).to have_id "loginform"
       expect(page).to have_id "wp-submit"
+    end
+
+    it "shouldn't have 404 requests", :missing_assets do
+      expect(page).to_not have_missing_assets
+    end
+
+    if WP.https?
+      it "shouldn't have any mixed content errors", :mixed_content do
+        expect(page).to_not have_mixed_content
+      end
     end
 
     # Only run these if we could create a test user
     if WP.user?
-      it "after succesfully login user should see WordPress adminbar" do
-        within("#loginform") do
-          fill_in 'log', :with => WP.user.username
-          fill_in 'pwd', :with => WP.user.password
-        end
-        click_button 'wp-submit'
-        # Should obtain cookies and be able to visit /wp-admin
-        expect(page).to have_id "wpadminbar"
-      end
-    end
+        context "login form" do
 
+            it "should redirect to wp-admin after succesful login", :login do
+                within("#loginform") do
+                    fill_in 'log', :with => WP.user.username
+                    fill_in 'pwd', :with => WP.user.password
+                end
+                click_button 'wp-submit'
+
+                expect(page).to have_id "wpadminbar"
+            end
+
+        end
+    end
   end
 
 end

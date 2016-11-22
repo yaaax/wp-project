@@ -35,6 +35,14 @@ module WP
     self.siteurl('/')
   end
 
+  def self.scheme()
+    @@uri.scheme
+  end
+
+  def self.https?
+    ( self.scheme == 'https' )
+  end
+
   # Return hostname
   def self.hostname
     @@uri.host.downcase
@@ -86,11 +94,13 @@ module WP
       unless $?.success?
         system "wp user update #{username} --user_pass=#{password} --role=administrator --require=#{File.dirname(__FILE__)}/disable-wp-mail.php > /dev/null 2>&1"
       end
-      # If we couldn't create user just skip the last test
+      # If we couldn't create user just skip the user tests
       unless $?.success?
         return nil
       end
     end
+
+    puts "Using WordPress user: #{username} / password: #{password}"
 
     @@user = OpenStruct.new({ :username => username, :password => password, :firstname => firstname, :lastname => lastname })
     return @@user
@@ -108,6 +118,7 @@ module WP
       return true
     end
 
+    puts "\ndoing the cleanup..."
     system "wp user update #{@@user.username} --role=subscriber > /dev/null 2>&1"
     return true
   end
