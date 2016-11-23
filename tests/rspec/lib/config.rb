@@ -6,11 +6,14 @@ require 'capybara/rspec'
 # Load our default RSPEC MATCHERS
 require_relative 'matchers.rb'
 require_relative 'wp.rb'
+require_relative 'helpers.rb'
 
 ##
 # Create new user for the tests (or automatically use one from ENVs: WP_TEST_USER && WP_TEST_USER_PASS)
 ##
 WP.createUser
+
+Capybara.default_max_wait_time = 6
 
 RSpec.configure do |config|
   config.include Capybara::DSL
@@ -43,20 +46,28 @@ end
 
 RSpec.configure do |config|
 
-  ##
-  # After the tests put user into lesser mode so that it's harmless
-  # This way tests won't increase the index of user IDs everytime
-  ##
-  config.after(:suite) {
-    puts "\ndoing the cleanup..."
-    WP.lowerTestUserPrivileges
-  }
 
-  ##
-  # Make request more verbose for the logs so that we can differentiate real requests and bot
-  # Also in production we need to pass shadow cookie to route the requests to right container
-  ##
-  config.before(:each) {
-    page.driver.add_header("User-Agent", "Integration Tests Bot")
-  }
+    ##
+    # Include helpers
+    ##
+    config.include UserActions, type: :request
+
+    config.include WaitForAjax, type: :request
+
+    ##
+    # After the tests put user into lesser mode so that it's harmless
+    # This way tests won't increase the index of user IDs everytime
+    ##
+    config.after(:suite) {
+        puts "\ndoing the cleanup..."
+        WP.lowerTestUserPrivileges
+    }
+
+    ##
+    # Make request more verbose for the logs so that we can differentiate real requests and bot
+    # Also in production we need to pass shadow cookie to route the requests to right container
+    ##
+    config.before(:each) {
+        page.driver.add_header("User-Agent", "Integration Tests Bot")
+    }
 end

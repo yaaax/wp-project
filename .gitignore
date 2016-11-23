@@ -14,6 +14,12 @@
 !.env.example
 
 ##
+# Images created from tests
+##
+tests/rspec/images/*
+!tests/rspec/images/.gitkeep
+
+##
 # WP core
 # - This is installed by Composer
 ##
