@@ -34,9 +34,18 @@ test:
     # Use these in local development and CI
     WP_TEST_USER: admin
     WP_TEST_USER_PASS: admin
-
   dns:
     - 10.254.254.254
+
+
+##
+# nodejs container which installs and builds all frontend assets in all all themes with package.json
+##
+webpack-builder:
+  image: devgeniem/node-assets-builder
+  volumes_from:
+    - web
+  command: find /var/www/project/web/app/themes/ -mindepth 1 -maxdepth 1 -type d -exec node_install_and_build_webpack {} \;
 
 ##
 # Web Server which runs nginx+php

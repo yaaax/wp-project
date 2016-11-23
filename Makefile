@@ -12,3 +12,5 @@ clean:
     gdev rm -f
 test: start
     gdev run test /var/www/project/scripts/test.sh
+build:
+	gdev run webpack-builder
