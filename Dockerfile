@@ -6,7 +6,10 @@ ENV PORT=8080 \
     FLYNN_PROCESS_TYPE='WEB' \
     # Use these uid/gid in production by default and change them when needed
     WP_UID=10000 \
-    WP_GID=10001
+    WP_GID=10001 \
+    # Change these in real environments
+    BASIC_AUTH_USER=hello \
+    BASIC_AUTH_PASSWORD_HASH=world
 
 # Skip dynamic user creation and
 # create user with ID WP_UID/WP_GID here for nginx/php-fpm

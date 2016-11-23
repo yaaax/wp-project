@@ -86,6 +86,10 @@ web:
     NGINX_REDIS_CACHE_TTL_DEFAULT: "1"
     NGINX_REDIS_CACHE_TTL_MAX: "1"
 
+    # These variables can be used in nginx templates like .htpasswd
+    BASIC_AUTH_USER: hello
+    BASIC_AUTH_PASSWORD_HASH: world
+
     # These will be mapped automatically in development to jwilder/nginx-proxy
     VIRTUAL_HOST: wordpress.test
     VIRTUAL_PORT: 8080

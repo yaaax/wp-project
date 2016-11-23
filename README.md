@@ -12,6 +12,7 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 - Uses composer for installing plugins
 - Include `.drone.yml` for using [Drone CI](https://github.com/drone/drone).
 - Includes phantomjs tests through rspec for doing integration testing. Source: [Seravo/wordpress](https://github.com/Seravo/wordpress).
+- Custom Nginx includes and env templating nginx configs
 
 ## Workflow for WP projects
 1. After you have cloned this repository in the new client project replace all `THEMENAME` and `PROJECTNAME` references from all files from this project to your project name.
@@ -36,6 +37,9 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 7. Update this Readme as many times as you can.
     * Most important details are usually the details about data models and their input/output.
     * Also add all 3rd-party dependencies here
+8. Replace `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD_HASH` from `Dockerfile` with real credentials.
+    * You can find more info about formats here: http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html
+    * For example you can generate password hash with: `$ openssl passwd -crypt "password"`
 
 ## Start local development
 This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use [gdev](https://github.com/devgeniem/gdev).
