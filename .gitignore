@@ -91,3 +91,7 @@ node_modules
 
 # If someone used sed-replace please ignore backup files
 *.bak
+
+# Ignore all nginx files generated from templates
+nginx/environments/*/server/.htpasswd
+nginx/environments/*/server/basic-auth.conf
