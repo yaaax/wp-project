@@ -7,22 +7,20 @@ ENV PORT=8080 \
     # Use these uid/gid in production by default and change them when needed
     WP_UID=10000 \
     WP_GID=10001 \
+    WEB_USER=wordpress \
+    WEB_GROUP=web \
     # Change these in real environments
     BASIC_AUTH_USER=hello \
-    BASIC_AUTH_PASSWORD_HASH=world
+    BASIC_AUTH_PASSWORD_HASH='{PLAIN}world'
 
 # Skip dynamic user creation and
 # create user with ID WP_UID/WP_GID here for nginx/php-fpm
 # this saves some time in the startup in production
-RUN     rm -f /etc/cont-init.d/00-maybe-symlink-root \
-        rm -f /etc/cont-init.d/01-create-web-user \
-    &&  rm -f /etc/cont-init.d/01-init-web \
-    # Create new user
-    &&  addgroup --system --gid $WP_GID web \
-    &&  adduser --system --gid $WP_GID --uid $WP_UID wordpress  \
-    # Give user write access to /var/www/uploads
-    &&  mkdir -p /var/www/uploads \
-    &&  chown wordpress:web -R /var/www/uploads
+RUN addgroup --system --gid $WP_GID $WEB_GROUP && \
+    adduser --system --gid $WP_GID --uid $WP_UID $WEB_USER && \
+
+    # Configure timezone for cron
+    dpkg-reconfigure tzdata
 
 ##
 # Install things in certain order to allow better caching
@@ -56,13 +54,3 @@ COPY web/app/languages /var/www/project/web/app/languages
 COPY web/app/mu-plugins /var/www/project/web/app/mu-plugins
 COPY web/app/plugins /var/www/project/web/app/plugins
 COPY web/app/themes /var/www/project/web/app/themes
-
-# TODO:
-# Nginx needs to own the files so that it can read the assets
-# Wordpress should be run with different user and nginx with different user
-# Check that web:wordpress user doesn't have write access anywhere but into uploads
-#RUN chown root:root -R /var/www/project \
-#    && chmod go-wx -R /var/www/project
-
-
-
