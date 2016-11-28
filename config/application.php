@@ -69,6 +69,14 @@ define( 'WP_CONTENT_DIR', $webroot_dir . CONTENT_DIR );
 define( 'WP_CONTENT_URL', WP_HOME . CONTENT_DIR );
 
 /**
+ * Deprecated variables which some stupid plugins still use
+ * @see wp-includes/default-constants.php:162
+ * @see wp-includes/default-constants.php:189
+ */
+define( 'PLUGINDIR', CONTENT_DIR . '/plugins' );
+define( 'MUPLUGINDIR', CONTENT_DIR . '/mu-plugins' );
+
+/**
  * DB settings - Use MYSQL_DATABASE, MYSQL_USER, MYSQL_PWD, MYSQL_HOST first
  * but fallback to docker container links
  */
