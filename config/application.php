@@ -70,6 +70,7 @@ define( 'WP_CONTENT_URL', WP_HOME . CONTENT_DIR );
 
 /**
  * Deprecated variables which some stupid plugins still use
+ *
  * @see wp-includes/default-constants.php:162
  * @see wp-includes/default-constants.php:189
  */
