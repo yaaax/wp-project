@@ -13,6 +13,7 @@ Templating engine uses `envsubst` command and replaces the result in filename wi
 ## For example
 
 Add `nginx/server/redis-header.conf.tmpl` file inside your project like this:
+
 ```
 # Add X-I-Have-Redis header when system uses redis
 set $redis_host '${REDIS_HOST}';
@@ -22,6 +23,7 @@ if ( $redis_host != '' ) {
 ```
 
 When container starts and has `REDIS_HOST=10.254.254.254` it will render that file into `nginx/server/redis-header.conf` containing:
+
 ```
 # Add X-I-Have-Redis header when system uses redis
 set $redis_host '10.254.254.254';
@@ -35,6 +37,7 @@ if ( $redis_host != '' ) {
 
 ## Supported envs
 This is list of env which can be used in `*.tmpl` files.
+
 ```
 PORT
 WEB_ROOT

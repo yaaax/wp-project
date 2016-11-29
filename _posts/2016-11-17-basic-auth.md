@@ -13,6 +13,7 @@ Basic auth is used for restricting access to your site. This is useful for publi
 ## For example: Basic auth for staging environment
 
 Add `nginx/environments/staging/basic-auth.conf.tmpl` with:
+
 ```
 ##
 # Use password for staging environment
@@ -22,12 +23,14 @@ auth_basic_user_file ${__DIR__}/.htpasswd;
 ```
 
 Generate new password hash using openssl:
+
 ```bash
 $ openssl passwd -crypt "password"
 WjwOpfuB2pppo
 ```
 
 And add username and password hash into `nginx/environments/staging/.htpasswd` like:
+
 ```
 user:WjwOpfuB2pppo
 ```
