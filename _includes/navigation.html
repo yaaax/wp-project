@@ -7,18 +7,22 @@
         {% assign attr = section[0] %}
         {% assign label = section[1] %}
 
-        {% for page in site.categories[attr] %}
-            {% if page.published != false %}
-                {% if forloop.first %}
-                    <li class="nav-header">{{ label }}</li>
-                {% endif %}
-                <li data-order="{{ page.order }}"><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
-            {% endif%}
-        {% endfor %}
-        {% unless forloop.last %}
-            <li class="divider"></li>
-        {% endunless %}
+        {% if site.categories[attr].size > 0 %}
+            {% assign ordered_pages = site.categories[attr] | sort:"order" %}
+
+            {% for page in ordered_pages %}
+                {% if page.published != false %}
+                    {% if forloop.first %}
+                        <li class="nav-header">{{ label }}</li>
+                    {% endif %}
+                    <li data-order="{{ page.order }}"><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
+                {% endif%}
+            {% endfor %}
+            {% unless forloop.last %}
+                <li class="divider"></li>
+            {% endunless %}
+        {% endif %}
     {% endfor %}
-<!-- List additional links. It is recommended to add a divider
+    <!-- List additional links. It is recommended to add a divider
     e.g. <li class="divider"></li> first to break up the content. -->
 </ul>

@@ -1,19 +1,19 @@
 # Site title and subtitle. This is used in _includes/header.html
 title: 'WP-project Docs'
-subtitle: ''
+subtitle: 'Snippets, help pages and tutorials for WordPress development'
 
 # Frontpage data
 frontpage:
   title: Introduction
 
 # Titile to show in footer
-name: gdev
+name: wp-project
 sponsored_by: Geniem Oy
 
 # Link to Github repo
 # This is used in editing links
 github:
-  repo: devgeniem/gdev
+  repo: devgeniem/wp-project
 
 # if you wish to integrate disqus on pages set your shortname here
 disqus_shortname: ''
@@ -30,9 +30,6 @@ google_site_verification: ''
 #   2 - show only if posts are present
 navigation: 1
 
-# URL to source code, used in _includes/footer.html
-codeurl: ''
-
 # Default categories (in order) to appear in the navigation
 sections: [
   ['nginx', 'Nginx'],
@@ -42,7 +39,7 @@ sections: [
 
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
-baseurl: '/gdev'
+baseurl: '/wp-project'
 
 # This is used in <meta> og fields
 siteurl: 'https://devgeniem.github.io'
