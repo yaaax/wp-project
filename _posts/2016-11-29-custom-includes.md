@@ -38,7 +38,7 @@ nginx
         `-- security.conf
 ```
 
-## How do nginx include files work?
+## How do nginx includes files work?
 The main `/etc/nginx/nginx.conf` inside docker container has these `include` directives:
 
 ```
