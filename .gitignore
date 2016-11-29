@@ -95,3 +95,7 @@ node_modules
 # Ignore all nginx files generated from templates
 nginx/environments/*/server/.htpasswd
 nginx/environments/*/server/basic-auth.conf
+
+## If switching branches locally from gh-pages branch
+_site
+.sass-cache
