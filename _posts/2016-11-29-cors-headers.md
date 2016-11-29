@@ -3,6 +3,7 @@ layout: page
 title: "CORS headers"
 category: nginx
 date: 2016-11-29 13:26:35
+order: 6
 ---
 
 Cross-Origin Resource Sharing headers aka CORS headers tell your site which other sites can require assets from this domain.

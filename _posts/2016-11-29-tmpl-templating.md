@@ -3,6 +3,7 @@ layout: page
 title: ".tmpl templating"
 category: nginx
 date: 2016-11-29 13:05:18
+order: 2
 ---
 
 Our docker container has custom [startup script](https://github.com/devgeniem/docker-wordpress/blob/master/debian-php7.0/rootfs/etc/cont-init.d/00-render-templates) which renders all `${ENV}` blocks from `*.tpml` files inside `nginx` folder.
