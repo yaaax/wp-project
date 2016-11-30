@@ -34,7 +34,8 @@ navigation: 1
 sections: [
   ['nginx', 'Nginx'],
   ['examples', 'Examples'],
-  ['troubleshooting', 'Troubleshooting']
+  ['troubleshooting', 'Troubleshooting'],
+  ['info', 'Info']
 ]
 
 # Keep as an empty string if served up at the root. If served up at a specific
