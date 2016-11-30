@@ -74,8 +74,8 @@ web:
     # We want to nearly identical codebase in production and development
     WP_ENV: development
 
-    WP_UID: 1000
-    WP_GID: 1001
+    WEB_UID: 1000
+    WEB_GID: 1001
 
     # Set php to use redis for object cache & sessions
     PHP_SESSION_HANDLER: redis

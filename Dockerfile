@@ -5,8 +5,8 @@ FROM devgeniem/wordpress-server:debian-php7.0
 ENV PORT=8080 \
     FLYNN_PROCESS_TYPE='WEB' \
     # Use these uid/gid in production by default and change them when needed
-    WP_UID=10000 \
-    WP_GID=10001 \
+    WEB_UID=10000 \
+    WEB_GID=10001 \
     WEB_USER=wordpress \
     WEB_GROUP=web \
     # Change these in real environments
