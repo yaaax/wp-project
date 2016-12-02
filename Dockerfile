@@ -14,10 +14,10 @@ ENV PORT=8080 \
     BASIC_AUTH_PASSWORD_HASH='{PLAIN}world'
 
 # Skip dynamic user creation and
-# create user with ID WP_UID/WP_GID here for nginx/php-fpm
+# create user with ID WEB_UID/WEB_GID here for nginx/php-fpm
 # this saves some time in the startup in production
 RUN addgroup --system --gid $WEB_GID $WEB_GROUP && \
-    adduser --system --gid $WEB_GID --uid $WP_UID $WEB_USER && \
+    adduser --system --gid $WEB_GID --uid $WEB_UID $WEB_USER && \
 
     # Configure timezone for cron
     dpkg-reconfigure tzdata
