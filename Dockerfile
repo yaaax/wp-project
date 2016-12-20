@@ -27,10 +27,10 @@ RUN addgroup --system --gid $WP_GID $WEB_GROUP && \
 # Stuff that changes only rarely should be prioritized first
 ##
 
-## Install web root files
-COPY web/*.php /var/www/project/web/
 ## Install wp core
 COPY web/wp /var/www/project/web/wp
+## Install all web root files with extension
+COPY web/*.* /var/www/project/web/
 ## Install scripts
 COPY scripts /var/www/project/scripts
 # Install database migration config
