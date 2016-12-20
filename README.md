@@ -1,8 +1,8 @@
 ![geniem-github-banner](https://cloud.githubusercontent.com/assets/5691777/14319886/9ae46166-fc1b-11e5-9630-d60aa3dc4f9e.png)
-# Geniem Wordpress Project template.
+# Geniem WordPress Project template.
 [![Build Status](https://travis-ci.org/devgeniem/wp-project.svg?branch=master)](https://travis-ci.org/devgeniem/wp-project) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-Use this with our docker-image: [devgeniem/alpine-wordpress](https://github.com/devgeniem/docker-alpine-wordpress).
+Use this with our docker-image: [devgeniem/wordpress-server](https://github.com/devgeniem/wordpress-server).
 
 And our development tools: [gdev](https://github.com/devgeniem/gdev).
 
@@ -56,3 +56,6 @@ $ gdev exec ./scripts/seed.sh
 ```
 
 Open the url you provided in step 2 for example: `client-name.test` and start developing the site.
+
+## Changelog
+http://devgeniem.github.io/wp-project/info/changelog/
