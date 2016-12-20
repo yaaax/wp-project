@@ -6,6 +6,9 @@ date: 2016-11-30 11:31:16
 order: 1
 ---
 
+## v20161220.0
+* Fix Dockerfile so that files like `web/favicon.ico` will be installed into the container.
+
 ## v20161130.0
 * Changed envs `WP_UID` and `WP_GID` to `WEB_UID` and `WEB_GID`
 * Added [devgeniem/wp-security-collection](https://github.com/devgeniem/wp-security-collection) package into composer.json
