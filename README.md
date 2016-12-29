@@ -32,12 +32,13 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
     $query_string  = filter_var($_SERVER['QUERY_STRING'], FILTER_SANITIZE_STRING)
     // @codingStandardsIgnoreEnd
     ```
-6. Add more `rspec` or `phpunit` tests while you continue to add features to your site.
+6. If you are using Flynn replace the application name in `.drone.yml` -> `FLYNN_APP`
+7. Add more `rspec` or `phpunit` tests while you continue to add features to your site.
     * This helps us to avoid regressions and will enable more agile refactoring of the code when needed.
-7. Update this Readme as many times as you can.
+8. Update this Readme as many times as you can.
     * Most important details are usually the details about data models and their input/output.
     * Also add all 3rd-party dependencies here
-8. Replace `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD_HASH` from `Dockerfile` with real credentials.
+9. Replace `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD_HASH` from `Dockerfile` with real credentials.
     * You can find more info about formats here: http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html
     * For example you can generate password hash with: `$ openssl passwd -crypt "password"`
 
