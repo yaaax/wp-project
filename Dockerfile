@@ -35,8 +35,6 @@ COPY web/*.* /var/www/project/web/
 COPY scripts /var/www/project/scripts
 # Install database migration config
 COPY phinx.yml /var/www/project/phinx.yml
-## Install database migrations and seeds
-COPY db /var/www/project/db
 ## Install nginx configs
 COPY nginx /var/www/project/nginx
 ## Install application config
