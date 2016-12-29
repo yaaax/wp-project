@@ -81,6 +81,9 @@ web:
     PHP_SESSION_HANDLER: redis
     PHP_SESSION_REDIS_DB: 0
 
+    # This is the default theme name WordPress will use
+    WP_DEFAULT_THEME: THEMENAME
+
     # Use same caching solution as in production but only for a really small time
     # Default value is 1 second
     NGINX_REDIS_CACHE_TTL_DEFAULT: "1"

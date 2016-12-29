@@ -137,7 +137,9 @@ define( 'WP_UPLOADS_URL', env( 'WP_UPLOADS_URL' ) ?: WP_HOME . '/uploads' );
  */
 
 // @codingStandardsIgnoreStart
-define( 'WP_DEFAULT_THEME', 'THEMENAME' );
+if ( env( 'WP_DEFAULT_THEME' ) ) {
+    define( 'WP_DEFAULT_THEME', env( 'WP_DEFAULT_THEME' ) );
+}
 // @codingStandardsIgnoreEnd
 
 /**
