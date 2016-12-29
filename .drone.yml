@@ -118,9 +118,6 @@ pipeline:
 
       # Create some dummy content so that rss and sitemaps will work
       - wp post generate --count=10
-
-    volumes:
-      - /opt/wpcs
   ##
   # Run integration tests with phantomjs & ruby rspec
   ##
