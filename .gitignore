@@ -4,6 +4,9 @@
 # Ignore OSX file system junk
 .DS_Store
 
+# Ignore Visual Studio configs
+.vscode
+
 # Don't include whole svn repositories
 .svn
 
