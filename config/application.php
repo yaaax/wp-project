@@ -135,12 +135,9 @@ define( 'WP_UPLOADS_URL', env( 'WP_UPLOADS_URL' ) ?: WP_HOME . '/uploads' );
  * Select default theme which is activated during project startup
  * Use this when the project has default theme to use.
  */
-
-// @codingStandardsIgnoreStart
 if ( env( 'WP_DEFAULT_THEME' ) ) {
     define( 'WP_DEFAULT_THEME', env( 'WP_DEFAULT_THEME' ) );
 }
-// @codingStandardsIgnoreEnd
 
 /**
  * Settings for packages in devgeniem/wp-safe-fast-and-clean-collection
