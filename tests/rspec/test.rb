@@ -36,6 +36,10 @@ describe "WordPress: #{WP.siteurl} -", :type => :request, :js => true do
         expect(page).to have_status_of [200]
     end
 
+    it "should be valid html document" do
+        expect(page).to have_valid_html
+    end
+
     it "should include stylesheets" do
         expect(page).to have_css
     end
@@ -102,6 +106,10 @@ describe "WordPress: #{WP.siteurl} -", :type => :request, :js => true do
 
     before do
       visit WP.siteurl('/wp-login.php')
+    end
+
+    it "should be valid html document" do
+        expect(page).to have_valid_html
     end
 
     it "has login form", :login do

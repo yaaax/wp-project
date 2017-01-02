@@ -2,6 +2,7 @@ require 'capybara/poltergeist'
 require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
+require 'html_validation'
 
 # Load our default RSPEC MATCHERS
 require_relative 'matchers.rb'
@@ -45,7 +46,6 @@ Capybara.register_driver :poltergeist do |app|
    )
 end
 
-
 RSpec.configure do |config|
 
 
@@ -55,6 +55,14 @@ RSpec.configure do |config|
     config.include UserActions, type: :request
 
     config.include WaitForAjax, type: :requests
+
+    config.include PageValidations, type: :request
+
+    # Allow crossorigin attributes even though they are not standard
+    # For example twenty* themes use these in <link rel="preconnect"> tags
+    PageValidations::HTMLValidation.ignored_errors = [
+        'proprietary attribute "crossorigin"'
+    ]
 
     ##
     # After the tests put user into lesser mode so that it's harmless
