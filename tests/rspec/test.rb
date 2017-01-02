@@ -21,7 +21,6 @@ end
 # This can help you getting tests up and running more faster.
 
 ### Begin tests ###
-
 describe "WordPress: #{WP.siteurl} -", :type => :request, :js => true do
 
   subject { page }
@@ -59,15 +58,15 @@ describe "WordPress: #{WP.siteurl} -", :type => :request, :js => true do
 
   # Check that RSS feed is working
   # This is not working in WordPress 4.7 because of https://core.trac.wordpress.org/ticket/39141
-  #describe "RSS-feed", :rss do
-  #  before do
-  #      visit WP.siteurl('/feed/')
-  #  end
+  describe "RSS-feed", :rss do
+    before do
+        visit WP.siteurl('/feed/')
+    end
 
-  #  it "should have valid rss feed which contains link to itself" do
-  #      expect(page).to have_rss_link WP.siteurl('')
-  #  end
-  #end
+    it "should have valid rss feed which contains link to itself" do
+        expect(page).to have_rss_link WP.siteurl('')
+    end
+  end
 
   # Check that robots.txt is working
   describe "robots.txt", :robots do
