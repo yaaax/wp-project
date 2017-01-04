@@ -123,6 +123,7 @@ pipeline:
   ##
   test:
     image: devgeniem/poltergeist
+    pull: true
     environment:
       WP_TEST_URL: https://wordpress.test
       # Use these to login to WordPress

@@ -58,12 +58,6 @@ RSpec.configure do |config|
 
     config.include PageValidations, type: :request
 
-    # Allow crossorigin attributes even though they are not standard
-    # For example twenty* themes use these in <link rel="preconnect"> tags
-    PageValidations::HTMLValidation.ignored_errors = [
-        'proprietary attribute "crossorigin"'
-    ]
-
     ##
     # After the tests put user into lesser mode so that it's harmless
     # This way tests won't increase the index of user IDs everytime
