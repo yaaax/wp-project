@@ -159,10 +159,24 @@ define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?: 30 );
 define( 'NEWSLETTER_LOG_DIR', dirname( ini_get( 'error_log' ) ) . '/newsletter/' );
 
 /**
- * Disables polylang cookies and allows better caching
+ * Polylang settings
  * Uses: https://wordpress.org/plugins/polylang/
  */
+// Disables Polylang cookies and allows better caching
 define( 'PLL_COOKIE', false );
+
+// This setting allows Polylang functions to work correctly when used with wp-cli
+if ( defined( 'WP_CLI' ) and WP_CLI and ! defined( 'PLL_ADMIN' ) ) {
+    define( 'PLL_ADMIN', true );
+}
+
+// Disable Lingotek notice and menu item from Polylang
+define( 'PLL_LINGOTEK_AD', false );
+
+/**
+ * Define memory limit so that wp-cli can use more memory than the default 40M
+ */
+define( 'WP_MEMORY_LIMIT', env( 'PHP_MEMORY_LIMIT' ) ?: '128M' );
 
 /**
  * Bootstrap WordPress
