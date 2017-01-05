@@ -30,7 +30,7 @@ set -e
 # Get script directory
 DIR=$(dirname $(readlink -f "$0"))
 
-echo "Starting to import database seed..."
+echo "[INFO]: Starting to import database seed..."
 
 ##
 # Set default values for WP
@@ -55,12 +55,27 @@ export WP_TITLE=${WP_TITLE-WordPress}
 # Install WordPress if not installed yet
 if wp core version > /dev/null && ! wp core is-installed; then
 
-    echo "You can login to WordPress with credentials: $WP_ADMIN_USER / $WP_ADMIN_PASSWORD"
-    # Install basic tables
-    wp core install --url=$WP_SITEURL --title=$WP_TITLE \
-                    --admin_user=$WP_ADMIN_USER --admin_email=$WP_ADMIN_EMAIL \
-                    --admin_password=$WP_ADMIN_PASSWORD
+    if wp site is-installed 2>&1 | grep 'Site' | grep 'not found' > /dev/null; then
+        echo "[INFO]: This is Multisite installation"
 
-    # Activate all plugins
-    wp plugin activate --all
+        # Install Multisite
+        wp core multisite-install --title=$WP_TITLE --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL
+
+        # Activate all plugins for all sites
+        wp plugin activate --all --network
+
+        echo "[INFO]: WordPress Multisite: $WP_TITLE is now installed..."
+    else
+        # Install basic tables
+        wp core install --url=$WP_SITEURL --title=$WP_TITLE \
+                        --admin_user=$WP_ADMIN_USER --admin_email=$WP_ADMIN_EMAIL \
+                        --admin_password=$WP_ADMIN_PASSWORD
+
+        # Activate all plugins
+        wp plugin activate --all
+
+        echo "[INFO]: WordPress: $WP_TITLE is now installed..."
+    fi
+
+    echo "[INFO]: You can login to WordPress with credentials: $WP_ADMIN_USER / $WP_ADMIN_PASSWORD"
 fi
