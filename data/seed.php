@@ -1,4 +1,8 @@
 <?php
+/**
+ * This file generates default dummy data in WordPress database.
+ * You can run this with wp-cli: $ wp eval-file data/seed.php
+ */
 
 echo __FILE__ . ": Starting the seed script...\n";
 
@@ -21,7 +25,7 @@ if ( function_exists( 'pll_default_language' ) ) {
 }
 
 /**
- * More pages and navigation
+ * Default settings for pages
  */
 $page_defaults = [
     'post_status' => 'publish',
@@ -75,8 +79,6 @@ $navigations = [];
 foreach ( get_registered_nav_menus() as $navigation_slug => $navigation_name ) {
     $navigations[ $navigation_slug ] = $default_navigation;
 }
-
-var_dump($navigations);
 
 // Put all pages here
 $created_page_ids = [
