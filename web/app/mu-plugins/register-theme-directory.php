@@ -9,6 +9,7 @@
  * License:      MIT License
  */
 
+// Register default themes from web/wp/wp-content if WP_DEFAULT_THEME is not defined
 if ( ! defined( 'WP_DEFAULT_THEME' ) ) {
     register_theme_directory( ABSPATH . 'wp-content/themes' );
 }
