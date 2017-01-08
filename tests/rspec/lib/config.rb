@@ -58,6 +58,12 @@ RSpec.configure do |config|
 
     config.include PageValidations, type: :request
 
+    # Tidy5 gives warnings from elements which are actually valid
+    # Ignore these
+    PageValidations::HTMLValidation.ignored_errors = [
+        '<svg> proprietary attribute "xmlns:xlink"'
+    ]
+
     ##
     # After the tests put user into lesser mode so that it's harmless
     # This way tests won't increase the index of user IDs everytime

@@ -24,7 +24,7 @@ pipeline:
     image: devgeniem/wordpress-server:debian-php7.0
     environment:
       WP_ENV: testing
-      CERT_DOMAIN: '*.wordpress.test'
+      CERT_DOMAIN: 'wordpress.test'
       CERT_PATH: nginx/environments/testing/http
     commands:
       # For debugging
