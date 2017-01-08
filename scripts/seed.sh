@@ -28,7 +28,7 @@ set -e
 
 
 # Get script directory
-DIR=$(dirname $(readlink -f "$0"))
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "[INFO]: Starting to import database seed..."
 
@@ -79,3 +79,10 @@ if wp core version > /dev/null && ! wp core is-installed; then
 
     echo "[INFO]: You can login to WordPress with credentials: $WP_ADMIN_USER / $WP_ADMIN_PASSWORD"
 fi
+
+# Install pages and navigation
+echo "Continuing database seed with data/seed.php"
+wp eval-file $(dirname $DIR)/data/seed.php --skip-plugins=stream
+
+# Generate some dummy posts so that pagination on rss will work properly
+wp post generate --count=11

@@ -22,12 +22,11 @@ sync:
 ##
 # This is used for running rspec tests included in ./tests/rspec/test.rb
 ##
-test:
+browser-test:
   image: devgeniem/poltergeist
-  volumes_from:
-    - web
   volumes:
     - ${HOME}/.gdev/ca/ca.crt:/usr/local/share/ca-certificates/ca.crt:ro
+    - ./tests:/tests
   environment:
     WP_TEST_URL: https://wordpress.test
 
@@ -37,6 +36,14 @@ test:
   dns:
     - 10.254.254.254
 
+##
+# This container is used to run php codesniffer tests for the codebase
+##
+style-test:
+  image: devgeniem/wordpress-project-builder
+  volumes_from:
+    - web
+  command: /bin/false
 
 ##
 # nodejs container which installs and builds all frontend assets in all all themes with package.json
