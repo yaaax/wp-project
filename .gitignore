@@ -17,6 +17,11 @@
 !.env.example
 
 ##
+# Ignore Sitespeed results
+##
+tests/sitespeed-result
+
+##
 # Images created from tests
 ##
 tests/rspec/images/*

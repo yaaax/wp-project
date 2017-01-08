@@ -41,19 +41,24 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 9. Replace `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD_HASH` from `Dockerfile` with real credentials.
     * You can find more info about formats here: http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html
     * For example you can generate password hash with: `$ openssl passwd -crypt "password"`
+10. Define performance budget for this project by defining metrics into `tests/sitespeed-budget.json`.
+    * When this project grows older always try to keep same performance and avoid changes which undermine the original performance goals.
 
 ## Start local development
 This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use [gdev](https://github.com/devgeniem/gdev).
 
+Propably the easiest way to start is to run:
+
 ```
-# Install php dependencies and wp plugins (run in project root directory only!!!)
-$ composer install
+$ make init
+```
 
-# Start development environment
-$ gdev up
+This starts the local development environment, installs packages using composer, builds project assets and seeds the database.
 
-# Install seed data to local database
-$ gdev exec ./scripts/seed.sh
+## Testing
+You can run the php codesniffer, rspec and sitespeed tests by using the Makefile:
+```
+$ make test
 ```
 
 Open the url you provided in step 2 for example: `client-name.test` and start developing the site.
