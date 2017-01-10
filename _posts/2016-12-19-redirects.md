@@ -30,4 +30,4 @@ server {
 }
 ```
 
-This adds new vhost for nginx which automatically gets the $PORT from env.
+This adds new vhost for nginx which automatically gets the **http** $PORT from env.
