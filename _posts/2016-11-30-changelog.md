@@ -6,6 +6,9 @@ date: 2016-11-30 11:31:16
 order: 1
 ---
 
+## v20170112.0
+* Added `NGINX_CACHE_KEY` so that nginx http caching keys used for redis can be changed per project.
+
 ## v20161220.0
 * Fix Dockerfile so that files like `web/favicon.ico` will be installed into the container.
 
