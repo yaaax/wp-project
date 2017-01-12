@@ -140,6 +140,22 @@ pipeline:
       # Test the site with phantomjs
       - ./scripts/test.sh
   ##
+  # Notify channel about tests
+  ##
+  slack:
+    image: plugins/slack
+    channel: wp-team
+    username: Drone CI
+    template: >
+      <{{build.link}}|Build {{build.number}}> from <https://github.com/{{repo.owner}}/{{repo.name}}|{{repo.owner}}/{{repo.name}}> branch `{{build.branch}}` by <https://github.com/{{build.author}}|{{build.author}}>
+      {{#success build.status}}
+        *Status:* succeeded.
+      {{else}}
+        *Status:* failed. Please fix me.
+      {{/success}}
+    when:
+      status:  [ failure, success ]
+  ##
   # Publish to Flynn stage
   # - This uses flynn credentials automatically which are defined with $ drone global secret
   # - Following env need to be set: FLYNN_DOMAIN, FLYNN_KEY, FLYNN_TLSPIN
@@ -163,5 +179,25 @@ pipeline:
     privileged: true
     environment:
       FLYNN_APP: test
+    when:
+      branch: stable
+
+  ##
+  # Notify channel about deployment
+  ##
+  slack-stage-deploy:
+    image: plugins/slack
+    channel: wp-team
+    username: Drone CI
+    template: >
+      <{{build.link}}|Build {{build.number}}> from <https://github.com/{{repo.owner}}/{{repo.name}}|{{repo.owner}}/{{repo.name}}> deployed into *staging* servers.
+    when:
+      branch: master
+  slack-production-deploy:
+    image: plugins/slack
+    channel: wp-team
+    username: Drone CI
+    template: >
+      <{{build.link}}|Build {{build.number}}> from <https://github.com/{{repo.owner}}/{{repo.name}}|{{repo.owner}}/{{repo.name}}> deployed into *production* servers.
     when:
       branch: stable

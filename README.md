@@ -41,7 +41,8 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 9. Replace `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD_HASH` from `Dockerfile` with real credentials.
     * You can find more info about formats here: http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html
     * For example you can generate password hash with: `$ openssl passwd -crypt "password"`
-10. Define performance budget for this project by defining metrics into `tests/sitespeed-budget.json`.
+10. Add slack notifications from builds by replacing `wp-team` channel to your slack channel.
+11. Define performance budget for this project by defining metrics into `tests/sitespeed-budget.json`.
     * When this project grows older always try to keep same performance and avoid changes which undermine the original performance goals.
 
 ## Start local development
