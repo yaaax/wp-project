@@ -32,16 +32,14 @@ RUN addgroup --system --gid $WEB_GID $WEB_GROUP && \
 # Stuff that changes only rarely should be prioritized first
 ##
 
-## Install web root files
-COPY web/*.php /var/www/project/web/
 ## Install wp core
 COPY web/wp /var/www/project/web/wp
+## Install all web root files with extension
+COPY web/*.* /var/www/project/web/
 ## Install scripts
 COPY scripts /var/www/project/scripts
 # Install database migration config
 COPY phinx.yml /var/www/project/phinx.yml
-## Install database migrations and seeds
-COPY db /var/www/project/db
 ## Install nginx configs
 COPY nginx /var/www/project/nginx
 ## Install application config

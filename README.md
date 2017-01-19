@@ -32,27 +32,34 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
     $query_string  = filter_var($_SERVER['QUERY_STRING'], FILTER_SANITIZE_STRING)
     // @codingStandardsIgnoreEnd
     ```
-6. Add more `rspec` or `phpunit` tests while you continue to add features to your site.
+6. If you are using Flynn replace the application name in `.drone.yml` -> `FLYNN_APP`
+7. Add more `rspec` or `phpunit` tests while you continue to add features to your site.
     * This helps us to avoid regressions and will enable more agile refactoring of the code when needed.
-7. Update this Readme as many times as you can.
+8. Update this Readme as many times as you can.
     * Most important details are usually the details about data models and their input/output.
     * Also add all 3rd-party dependencies here
-8. Replace `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD_HASH` from `Dockerfile` with real credentials.
+9. Replace `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD_HASH` from `Dockerfile` with real credentials.
     * You can find more info about formats here: http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html
     * For example you can generate password hash with: `$ openssl passwd -crypt "password"`
+10. Add slack notifications from builds by replacing `wp-team` channel to your slack channel.
+11. Define performance budget for this project by defining metrics into `tests/sitespeed-budget.json`.
+    * When this project grows older always try to keep same performance and avoid changes which undermine the original performance goals.
 
 ## Start local development
 This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use [gdev](https://github.com/devgeniem/gdev).
 
+Propably the easiest way to start is to run:
+
 ```
-# Install php dependencies and wp plugins (run in project root directory only!!!)
-$ composer install
+$ make init
+```
 
-# Start development environment
-$ gdev up
+This starts the local development environment, installs packages using composer, builds project assets and seeds the database.
 
-# Install seed data to local database
-$ gdev exec ./scripts/seed.sh
+## Testing
+You can run the php codesniffer, rspec and sitespeed tests by using the Makefile:
+```
+$ make test
 ```
 
 Open the url you provided in step 2 for example: `client-name.test` and start developing the site.

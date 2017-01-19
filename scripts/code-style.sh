@@ -6,19 +6,17 @@
 ##
 
 # Get script directory
-DIR=$(dirname $(readlink -f "$0"))
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ##
 # Check php coding practises with codesniffer
 # - check only files in git and not files from plugins/packages
 ##
 if [ "$WP_ENV" = "testing" ]; then
-
-  # Show only summary in CI environment
-  /var/lib/wpcs/vendor/bin/phpcs -n -p --report=summary --standard=$DIR/../phpcs.xml $(git ls-files | grep .php)
-
+    set -x
+    # Show only summary in CI environment
+    phpcs -n -p --report=summary --standard=$DIR/../phpcs.xml .
 else
-
-  /var/lib/wpcs/vendor/bin/phpcs --standard=$DIR/../phpcs.xml $(git ls-files | grep .php)
-
+    set -x
+    phpcs --standard=$DIR/../phpcs.xml .
 fi

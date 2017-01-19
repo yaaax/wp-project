@@ -271,16 +271,16 @@
         },
         {
             "name": "devgeniem/wp-core-blocker",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devgeniem/wp-core-blocker.git",
-                "reference": "827a17bf97b0f1ab3dc2f641c9584b4c25e5dd60"
+                "reference": "4d0fee2a550bec8903f936537b334888b780bd0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devgeniem/wp-core-blocker/zipball/827a17bf97b0f1ab3dc2f641c9584b4c25e5dd60",
-                "reference": "827a17bf97b0f1ab3dc2f641c9584b4c25e5dd60",
+                "url": "https://api.github.com/repos/devgeniem/wp-core-blocker/zipball/4d0fee2a550bec8903f936537b334888b780bd0a",
+                "reference": "4d0fee2a550bec8903f936537b334888b780bd0a",
                 "shasum": ""
             },
             "require": {
@@ -299,7 +299,38 @@
                 }
             ],
             "description": "Disables WP from contacting wp.org servers and disables users from installing anything in wp-admin.",
-            "time": "2016-10-19 06:27:53"
+            "time": "2016-12-28 22:55:20"
+        },
+        {
+            "name": "devgeniem/wp-core-fixes",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devgeniem/wp-core-fixes.git",
+                "reference": "de66b3305184adea5d8073d75d91f773f8dc7081"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devgeniem/wp-core-fixes/zipball/de66b3305184adea5d8073d75d91f773f8dc7081",
+                "reference": "de66b3305184adea5d8073d75d91f773f8dc7081",
+                "shasum": ""
+            },
+            "type": "wordpress-muplugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Onni Hakala",
+                    "email": "onni.hakala@geniem.com",
+                    "homepage": "http://github.com/onnimonni",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Small fixes for bugs in certain versions of WordPress Core.",
+            "homepage": "http://github.com/devgeniem/wp-core-fixes",
+            "time": "2017-01-02 09:29:35"
         },
         {
             "name": "devgeniem/wp-define-more",
@@ -498,22 +529,23 @@
         },
         {
             "name": "devgeniem/wp-safe-fast-and-clean-collection",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devgeniem/wp-safe-fast-and-clean-collection.git",
-                "reference": "461ad31f550a8b74a6b741f913277ac085f155f9"
+                "reference": "5318a47b7823b43a061dc0b274e77b2c5a30ac18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devgeniem/wp-safe-fast-and-clean-collection/zipball/461ad31f550a8b74a6b741f913277ac085f155f9",
-                "reference": "461ad31f550a8b74a6b741f913277ac085f155f9",
+                "url": "https://api.github.com/repos/devgeniem/wp-safe-fast-and-clean-collection/zipball/5318a47b7823b43a061dc0b274e77b2c5a30ac18",
+                "reference": "5318a47b7823b43a061dc0b274e77b2c5a30ac18",
                 "shasum": ""
             },
             "require": {
                 "aucor/dynamic-mo-loader": "*",
                 "devgeniem/better-wp-install-dropin": "*",
                 "devgeniem/wp-core-blocker": "*",
+                "devgeniem/wp-core-fixes": "*",
                 "devgeniem/wp-define-more": "*",
                 "devgeniem/wp-no-admin-ajax": "*",
                 "devgeniem/wp-readonly-options": "*",
@@ -543,7 +575,7 @@
                 "safe",
                 "wordpress"
             ],
-            "time": "2016-11-07 08:42:52"
+            "time": "2017-01-02 09:36:54"
         },
         {
             "name": "devgeniem/wp-sanitize-accented-uploads",
@@ -633,16 +665,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.6.1",
+            "version": "4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "aca8da84b4a699b16b8bcc96d2bc794a4c7b5ae3"
+                "reference": "b327faa6feea3a4058178dee7ac8b512bd957e92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/aca8da84b4a699b16b8bcc96d2bc794a4c7b5ae3",
-                "reference": "aca8da84b4a699b16b8bcc96d2bc794a4c7b5ae3",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/b327faa6feea3a4058178dee7ac8b512bd957e92",
+                "reference": "b327faa6feea3a4058178dee7ac8b512bd957e92",
                 "shasum": ""
             },
             "require": {
@@ -666,7 +698,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2016-09-07 15:01:47"
+            "time": "2016-12-06 18:46:46"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -718,10 +750,10 @@
         },
         {
             "name": "koodimonni-language/core-fi",
-            "version": "4.6.1",
+            "version": "4.7",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/4.6.1/fi.zip",
+                "url": "https://downloads.wordpress.org/translation/core/4.7/fi.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -989,16 +1021,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "4a68f8953180bf77ea65f585020f4db0b18600b4"
+                "reference": "b4ec9f099599cfc5b7f4d07bb2e910781a2be5e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/4a68f8953180bf77ea65f585020f4db0b18600b4",
-                "reference": "4a68f8953180bf77ea65f585020f4db0b18600b4",
+                "url": "https://api.github.com/repos/symfony/config/zipball/b4ec9f099599cfc5b7f4d07bb2e910781a2be5e4",
+                "reference": "b4ec9f099599cfc5b7f4d07bb2e910781a2be5e4",
                 "shasum": ""
             },
             "require": {
@@ -1041,20 +1073,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-29 11:12:32"
+            "time": "2016-12-09 07:45:17"
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "09d0fd33560e3573185a2ea17614e37ba38716c5"
+                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/09d0fd33560e3573185a2ea17614e37ba38716c5",
-                "reference": "09d0fd33560e3573185a2ea17614e37ba38716c5",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
+                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
                 "shasum": ""
             },
             "require": {
@@ -1104,11 +1136,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-16 22:18:16"
+            "time": "2016-12-11 14:34:22"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1165,7 +1197,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -1273,16 +1305,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "f2300ba8fbb002c028710b92e1906e7457410693"
+                "reference": "a7095af4b97a0955f85c8989106c249fa649011f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/f2300ba8fbb002c028710b92e1906e7457410693",
-                "reference": "f2300ba8fbb002c028710b92e1906e7457410693",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/a7095af4b97a0955f85c8989106c249fa649011f",
+                "reference": "a7095af4b97a0955f85c8989106c249fa649011f",
                 "shasum": ""
             },
             "require": {
@@ -1324,7 +1356,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-18 21:17:59"
+            "time": "2016-12-10 10:07:06"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1387,7 +1419,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/stream.3.1.1.zip",
-                "reference": null,
+                "reference": "tags/3.1.1",
                 "shasum": null
             },
             "require": {
@@ -1400,16 +1432,16 @@
     "packages-dev": [
         {
             "name": "filp/whoops",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa"
+                "reference": "2abce9d956589122c6443d6265f01cf7e9388e3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa",
-                "reference": "3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/2abce9d956589122c6443d6265f01cf7e9388e3c",
+                "reference": "2abce9d956589122c6443d6265f01cf7e9388e3c",
                 "shasum": ""
             },
             "require": {
@@ -1456,7 +1488,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2016-10-11 15:32:23"
+            "time": "2016-12-26 16:13:31"
         },
         {
             "name": "pimple/pimple",

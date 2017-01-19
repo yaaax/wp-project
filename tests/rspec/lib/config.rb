@@ -2,6 +2,7 @@ require 'capybara/poltergeist'
 require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
+require 'html_validation'
 
 # Load our default RSPEC MATCHERS
 require_relative 'matchers.rb'
@@ -19,6 +20,8 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.verbose_retry = true
   config.default_retry_count = 1
+  # Skip rspec-retry gem paths from rspec output
+  config.backtrace_exclusion_patterns << /gems\/rspec-retry/
 end
 
 Capybara.configure do |config|
@@ -34,15 +37,14 @@ Capybara.register_driver :poltergeist do |app|
     timeout: 60,
     :phantomjs_options => [
        '--webdriver-logfile=/dev/null',
-       '--load-images=no',
+       '--load-images=yes',
        '--debug=no',
-       '--ignore-ssl-errors=yes',
+       '--ignore-ssl-errors=no',
        '--ssl-protocol=TLSv1'
     ],
     window_size: [1920,1080]
    )
 end
-
 
 RSpec.configure do |config|
 
@@ -52,7 +54,15 @@ RSpec.configure do |config|
     ##
     config.include UserActions, type: :request
 
-    config.include WaitForAjax, type: :request
+    config.include WaitForAjax, type: :requests
+
+    config.include PageValidations, type: :request
+
+    # Tidy5 gives warnings from elements which are actually valid
+    # Ignore these
+    PageValidations::HTMLValidation.ignored_errors = [
+        '<svg> proprietary attribute "xmlns:xlink"'
+    ]
 
     ##
     # After the tests put user into lesser mode so that it's harmless

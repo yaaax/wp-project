@@ -28,6 +28,9 @@
   <!-- Tests might have unusual notations which we can't check -->
   <exclude-pattern>/tests/</exclude-pattern>
 
+  <!-- Skip seed data -->
+  <exclude-pattern>/data/</exclude-pattern>
+
   <!-- Don't check composer dependencies -->
   <exclude-pattern>/vendor/</exclude-pattern>
 
