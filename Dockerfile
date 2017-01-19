@@ -1,5 +1,7 @@
-# This is for production docker image
-FROM devgeniem/wordpress-server:debian-php7.0
+# This is for production docker image with new relic php daemon
+FROM devgeniem/wordpress-newrelic-server:debian-php7.0
+# Same image without new relic:
+#FROM devgeniem/wordpress-server:debian-php7.0
 
 # Use port 8080 for flynn/router
 ENV PORT=8080 \
@@ -11,7 +13,10 @@ ENV PORT=8080 \
     WEB_GROUP=web \
     # Change these in real environments
     BASIC_AUTH_USER=hello \
-    BASIC_AUTH_PASSWORD_HASH='{PLAIN}world'
+    BASIC_AUTH_PASSWORD_HASH='{PLAIN}world' \
+    # New relic application name
+    # Rename this for production
+    NR_APP_NAME="WordPress Site"
 
 # Skip dynamic user creation and
 # create user with ID WEB_UID/WEB_GID here for nginx/php-fpm
