@@ -37,3 +37,7 @@ test:
 	docker-compose run --rm browser-test rspec /tests/rspec/test.rb
 	docker run --rm --privileged --dns $(DNS_SERVER) sitespeedio/coach https://$(SERVER_NAME) -b chrome --details --description
 	docker run --rm --privileged --dns $(DNS_SERVER) -v $(shell pwd)/tests:/sitespeed.io sitespeedio/sitespeed.io --budget sitespeed-budget.json -b chrome -n 2 https://$(SERVER_NAME)
+
+# Fix codesniffer errors automatically
+beatify:
+	docker-compose run --rm style-test phpcbf --standard=phpcs.xml $(PHP_FILES)
