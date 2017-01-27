@@ -103,6 +103,7 @@ node_modules
 # Ignore all nginx files generated from templates
 nginx/environments/*/server/.htpasswd
 nginx/environments/*/server/basic-auth.conf
+nginx/environments/testing/http/https-server.conf
 
 ## If switching branches locally from gh-pages branch
 _site

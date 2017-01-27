@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe673113c5d0342925d2d2c5fb5d8b4d",
     "content-hash": "200201853fdb5c19c73c18be06e02e9c",
     "packages": [
         {
@@ -65,7 +64,7 @@
                 "search",
                 "wordpress"
             ],
-            "time": "2016-11-11 15:44:55"
+            "time": "2016-11-11T15:44:55+00:00"
         },
         {
             "name": "aucor/dynamic-mo-loader",
@@ -98,7 +97,7 @@
             ],
             "description": "Better text domain loading with object cache support for WordPress",
             "homepage": "https://github.com/aucor/dynamic-mo-loader",
-            "time": "2016-10-31 07:05:24"
+            "time": "2016-10-31T07:05:24+00:00"
         },
         {
             "name": "composer/installers",
@@ -182,7 +181,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-02-24 04:21:34"
+            "time": "2014-02-24T04:21:34+00:00"
         },
         {
             "name": "devgeniem/better-wp-db-error",
@@ -225,7 +224,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2016-07-11 09:18:14"
+            "time": "2016-07-11T09:18:14+00:00"
         },
         {
             "name": "devgeniem/better-wp-install-dropin",
@@ -267,7 +266,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2016-10-25 09:02:05"
+            "time": "2016-10-25T09:02:05+00:00"
         },
         {
             "name": "devgeniem/wp-core-blocker",
@@ -299,7 +298,7 @@
                 }
             ],
             "description": "Disables WP from contacting wp.org servers and disables users from installing anything in wp-admin.",
-            "time": "2016-12-28 22:55:20"
+            "time": "2016-12-28T22:55:20+00:00"
         },
         {
             "name": "devgeniem/wp-core-fixes",
@@ -330,7 +329,7 @@
             ],
             "description": "Small fixes for bugs in certain versions of WordPress Core.",
             "homepage": "http://github.com/devgeniem/wp-core-fixes",
-            "time": "2017-01-02 09:29:35"
+            "time": "2017-01-02T09:29:35+00:00"
         },
         {
             "name": "devgeniem/wp-define-more",
@@ -374,7 +373,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2016-10-01 07:58:43"
+            "time": "2016-10-01T07:58:43+00:00"
         },
         {
             "name": "devgeniem/wp-no-admin-ajax",
@@ -407,7 +406,7 @@
                 }
             ],
             "description": "A WordPress plugin that lightens the WP AJAX routine and directs the requests to front-end rather than admin back-end.",
-            "time": "2016-10-30 20:02:02"
+            "time": "2016-10-30T20:02:02+00:00"
         },
         {
             "name": "devgeniem/wp-noindex-testing-staging-robots",
@@ -449,7 +448,7 @@
                 "staging",
                 "wordpress"
             ],
-            "time": "2016-10-30 19:02:22"
+            "time": "2016-10-30T19:02:22+00:00"
         },
         {
             "name": "devgeniem/wp-readonly-options",
@@ -491,7 +490,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2016-09-19 16:47:08"
+            "time": "2016-09-19T16:47:08+00:00"
         },
         {
             "name": "devgeniem/wp-redis-object-cache-dropin",
@@ -525,7 +524,7 @@
             ],
             "description": "A persistent object cache backend for WordPress powered by Redis. Supports Predis, PhpRedis, HHVM, replication and clustering.",
             "homepage": "https://github.com/devgeniem/wp-redis-object-cache-dropin",
-            "time": "2016-10-30 19:28:29"
+            "time": "2016-10-30T19:28:29+00:00"
         },
         {
             "name": "devgeniem/wp-safe-fast-and-clean-collection",
@@ -575,7 +574,7 @@
                 "safe",
                 "wordpress"
             ],
-            "time": "2017-01-02 09:36:54"
+            "time": "2017-01-02T09:36:54+00:00"
         },
         {
             "name": "devgeniem/wp-sanitize-accented-uploads",
@@ -618,7 +617,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2016-04-20 15:10:05"
+            "time": "2016-04-20T15:10:05+00:00"
         },
         {
             "name": "devgeniem/wp-security-collection",
@@ -661,20 +660,20 @@
                 "security",
                 "wordpress"
             ],
-            "time": "2016-11-07 15:18:02"
+            "time": "2016-11-07T15:18:02+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.7",
+            "version": "4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "b327faa6feea3a4058178dee7ac8b512bd957e92"
+                "reference": "6a6a20e568db37fb501fe9deb75ed2a8600d1b30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/b327faa6feea3a4058178dee7ac8b512bd957e92",
-                "reference": "b327faa6feea3a4058178dee7ac8b512bd957e92",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/6a6a20e568db37fb501fe9deb75ed2a8600d1b30",
+                "reference": "6a6a20e568db37fb501fe9deb75ed2a8600d1b30",
                 "shasum": ""
             },
             "require": {
@@ -698,7 +697,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2016-12-06 18:46:46"
+            "time": "2017-01-11T17:46:47+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -746,14 +745,14 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2015-06-11 15:15:30"
+            "time": "2015-06-11T15:15:30+00:00"
         },
         {
             "name": "koodimonni-language/core-fi",
-            "version": "4.7",
+            "version": "4.7.1",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/4.7/fi.zip",
+                "url": "https://downloads.wordpress.org/translation/core/4.7.1/fi.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -771,16 +770,16 @@
         },
         {
             "name": "koodimonni/composer-dropin-installer",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
-                "reference": "e8fcc1862926f4587a137edf240b1e3741f98e7a"
+                "reference": "b09dd53d7bcbe41afec63bd142b17575935e2349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/e8fcc1862926f4587a137edf240b1e3741f98e7a",
-                "reference": "e8fcc1862926f4587a137edf240b1e3741f98e7a",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/b09dd53d7bcbe41afec63bd142b17575935e2349",
+                "reference": "b09dd53d7bcbe41afec63bd142b17575935e2349",
                 "shasum": ""
             },
             "require": {
@@ -810,7 +809,7 @@
                 }
             ],
             "description": "Install packages or a few files from packages into custom paths without overwriting existing stuff.",
-            "time": "2016-10-30 19:22:35"
+            "time": "2017-01-11T19:10:05+00:00"
         },
         {
             "name": "oscarotero/env",
@@ -852,7 +851,7 @@
             "keywords": [
                 "env"
             ],
-            "time": "2016-05-08 17:14:32"
+            "time": "2016-05-08T17:14:32+00:00"
         },
         {
             "name": "psr/log",
@@ -899,7 +898,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "robmorgan/phinx",
@@ -960,7 +959,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2016-06-17 15:29:02"
+            "time": "2016-06-17T15:29:02+00:00"
         },
         {
             "name": "roots/wp-password-bcrypt",
@@ -1017,20 +1016,20 @@
             "keywords": [
                 "wordpress wp bcrypt password"
             ],
-            "time": "2016-03-01 16:27:06"
+            "time": "2016-03-01T16:27:06+00:00"
         },
         {
             "name": "symfony/config",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "b4ec9f099599cfc5b7f4d07bb2e910781a2be5e4"
+                "reference": "c5ea878b5a7f6a01b9a2f182f905831711b9ff3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/b4ec9f099599cfc5b7f4d07bb2e910781a2be5e4",
-                "reference": "b4ec9f099599cfc5b7f4d07bb2e910781a2be5e4",
+                "url": "https://api.github.com/repos/symfony/config/zipball/c5ea878b5a7f6a01b9a2f182f905831711b9ff3f",
+                "reference": "c5ea878b5a7f6a01b9a2f182f905831711b9ff3f",
                 "shasum": ""
             },
             "require": {
@@ -1073,20 +1072,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-09 07:45:17"
+            "time": "2017-01-02T20:32:22+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa"
+                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
-                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
+                "url": "https://api.github.com/repos/symfony/console/zipball/4f9e449e76996adf310498a8ca955c6deebe29dd",
+                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd",
                 "shasum": ""
             },
             "require": {
@@ -1136,20 +1135,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-11 14:34:22"
+            "time": "2017-01-08T20:47:33+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231"
+                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/9f923e68d524a3095c5a2ae5fc7220c7cbc12231",
-                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/810ba5c1c5352a4ddb15d4719e8936751dff0b05",
+                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05",
                 "shasum": ""
             },
             "require": {
@@ -1193,20 +1192,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-16 22:18:16"
+            "time": "2017-01-02T20:32:22+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4"
+                "reference": "a0c6ef2dc78d33b58d91d3a49f49797a184d06f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
-                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/a0c6ef2dc78d33b58d91d3a49f49797a184d06f4",
+                "reference": "a0c6ef2dc78d33b58d91d3a49f49797a184d06f4",
                 "shasum": ""
             },
             "require": {
@@ -1242,7 +1241,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-24 00:46:43"
+            "time": "2017-01-08T20:47:33+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1301,20 +1300,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a7095af4b97a0955f85c8989106c249fa649011f"
+                "reference": "50eadbd7926e31842893c957eca362b21592a97d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/a7095af4b97a0955f85c8989106c249fa649011f",
-                "reference": "a7095af4b97a0955f85c8989106c249fa649011f",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/50eadbd7926e31842893c957eca362b21592a97d",
+                "reference": "50eadbd7926e31842893c957eca362b21592a97d",
                 "shasum": ""
             },
             "require": {
@@ -1356,7 +1355,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-10 10:07:06"
+            "time": "2017-01-03T13:51:32+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1406,7 +1405,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-09-01 10:05:43"
+            "time": "2016-09-01T10:05:43+00:00"
         },
         {
             "name": "wpackagist-plugin/stream",
@@ -1419,7 +1418,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/stream.3.1.1.zip",
-                "reference": "tags/3.1.1",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1488,7 +1487,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2016-12-26 16:13:31"
+            "time": "2016-12-26T16:13:31+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -1534,7 +1533,7 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2015-09-11 15:10:35"
+            "time": "2015-09-11T15:10:35+00:00"
         },
         {
             "name": "rarst/wps",
@@ -1579,7 +1578,7 @@
                 "whoops",
                 "wordpress"
             ],
-            "time": "2016-05-08 17:45:56"
+            "time": "2016-05-08T17:45:56+00:00"
         }
     ],
     "aliases": [],
