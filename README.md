@@ -1,4 +1,4 @@
-![geniem-github-banner](https://cloud.githubusercontent.com/assets/5691777/14319886/9ae46166-fc1b-11e5-9630-d60aa3dc4f9e.png)
+https://github.com/devgeniem/wp-project-phpstorm-settings![geniem-github-banner](https://cloud.githubusercontent.com/assets/5691777/14319886/9ae46166-fc1b-11e5-9630-d60aa3dc4f9e.png)
 # Geniem WordPress Project template.
 [![Build Status](https://travis-ci.org/devgeniem/wp-project.svg?branch=master)](https://travis-ci.org/devgeniem/wp-project) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
@@ -44,6 +44,10 @@ And our development tools: [gdev](https://github.com/devgeniem/gdev).
 10. Add slack notifications from builds by replacing `wp-team` channel to your slack channel.
 11. Define performance budget for this project by defining metrics into `tests/sitespeed-budget.json`.
     * When this project grows older always try to keep same performance and avoid changes which undermine the original performance goals.
+
+## IDE Support
+We have preconfigured PhpStorm settings available in: https://github.com/devgeniem/wp-project-phpstorm-settings. These will be automatically installed when you run `$ make init`.
+
 
 ## Start local development
 This project includes example `docker-compose.yml` which you can use to develop locally. Ideally you would use [gdev](https://github.com/devgeniem/gdev).
