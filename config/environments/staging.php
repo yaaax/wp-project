@@ -1,6 +1,6 @@
 <?php
 /**
- * Staging enviroment config
+ * Staging environment config
  *
  * @package devgeniem/wp-project
  */

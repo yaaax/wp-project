@@ -13,7 +13,7 @@
 # Don't include whole svn repositories
 .svn
 
-# Custon environment variables may include passwords and other
+# Custom environment variables may include passwords and other
 # secrets and should not be tracked in git
 .env
 .env.*
@@ -62,13 +62,12 @@ web/app/mu-plugins/*
 ##
 web/app/db-error.php
 web/app/install.php
-web/app/object-cache.php
 
 ##
 # WP Themes
 # - Don't track themes which have packages
 # - Prefer using child themes and use composer for parent theme
-# - If you create custom themese, they are automatically tracked in git
+# - If you create custom themes, they are automatically tracked in git
 ##
 web/app/themes/twenty*
 !web/app/themes/.gitkeep
