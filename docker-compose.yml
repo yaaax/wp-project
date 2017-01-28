@@ -116,19 +116,21 @@ web:
     MYSQL_PWD: wordpress
 
     # Xdebug profiling is disabled because it slows down development
-    # If you want to profile this site turn it on and use ?XDEBUG_PROFILE get parameteter or cookie
+    # If you want to profile this site turn it on and use ?XDEBUG_PROFILE get parameter or cookie
     XDEBUG_ENABLE_PROFILE: 0
+    # Connect to host machine for remote xdebug. The IP address is alias for host machine 127.0.0.1 by gdev
+    XDEBUG_REMOTE_HOST: 10.254.254.254
+    # Raise the Nginx fastcgi timeout so that we can have longer debug sessions
+    # This also raises php_execution_time
+    NGINX_FASTCGI_TIMEOUT: 600
 
     # Mail settings
     SMTP_FROM: no-reply@wordpress.test
     # This will use local mail.test server
     SMTP_HOST: 172.17.0.1
 
-    # Connect to host machine for remote xdebug
-    XDEBUG_REMOTE_HOST: 10.254.254.254
-
 ##
-# Use basic mariadb container for database
+# Use basic Mariadb container for database
 ##
 db:
   image: mariadb
