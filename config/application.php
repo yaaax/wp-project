@@ -188,3 +188,8 @@ define( 'WP_MEMORY_LIMIT', env( 'PHP_MEMORY_LIMIT' ) ?: '128M' );
 if ( ! defined( 'ABSPATH' ) ) {
     define( 'ABSPATH', $webroot_dir . '/wp/' );
 }
+
+/**
+ * Remove temporary variables from the global context
+ */
+unset($root_dir, $webroot_dir, $env_config);
