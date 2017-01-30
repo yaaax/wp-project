@@ -16,9 +16,6 @@ services:
   cache:
     image: redis
 
-  mongo:
-    image: redis
-
 pipeline:
   ##
   # Check for easy mistakes as soon as possible
