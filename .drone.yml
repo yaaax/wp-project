@@ -16,25 +16,43 @@ services:
   cache:
     image: redis
 
+  mongo:
+    image: redis
+
 pipeline:
   ##
   # Check for easy mistakes as soon as possible
   ##
+  ##
+  # Check for easy mistakes as soon as possible
+  ##
   prepare:
-    image: devgeniem/wordpress-server:debian-php7.0
+    image: devgeniem/wordpress-project-builder:latest
     environment:
       WP_ENV: testing
-      CERT_DOMAIN: 'wordpress.test'
+      CERT_DOMAIN: wordpress.test
       CERT_PATH: nginx/environments/testing/http
     commands:
+
+      # Trust Github and gogs host key automatically to pull composer packages later
+      - mkdir -p ~/.ssh/
+      - ssh-keyscan -H git.geniem.io >> ~/.ssh/known_hosts
+      - ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      # Setup SSH-KEY if it's defined
+      - if [ "$DEPLOY_SSH_KEY" != "" ]; then echo $DEPLOY_SSH_KEY > ~/.ssh/id_rsa; chmod 0600 ~/.ssh/id_rsa; echo "Private ssh key setupped"; fi
+
       # For debugging
       - php --version
 
-      # Install and run codesniffer when phpcs.xml is present
-      - '[ -f phpcs.xml ] && composer create-project wp-coding-standards/wpcs --no-dev /opt/wpcs && /opt/wpcs/vendor/bin/phpcs --extensions=php --standard=phpcs.xml .'
+      # Run codesniffer ruleset
+      - phpcs --extensions=php --standard=phpcs.xml --runtime-set ignore_warnings_on_exit true .
 
-      # Generate self-signed ssl certificate
-      - openssl req -new -newkey rsa:1024 -days 7300 -nodes -x509 -subj "/CN=$CERT_DOMAIN" -keyout $CERT_PATH/default.key -out $CERT_PATH/default.crt
+      # Install php dependencies
+      - ./scripts/install.sh
+
+      # Generate self-signed wildcard ssl certificate
+      - openssl req -new -newkey rsa:1024 -sha256 -days 7300 -nodes -x509 -subj "/CN=$CERT_DOMAIN" -keyout $CERT_PATH/default.key -out $CERT_PATH/default.crt
   ##
   # Build assets defined with webpack in all themes
   ##
