@@ -42,7 +42,7 @@
     "composer/installers": "v1.0.12",
 
     "koodimonni/composer-dropin-installer": ">=1.0",
-    "koodimonni-language/core-fi": "*",
+    "koodimonni-language/core-fr_fr": "*",
 
     "devgeniem/wp-safe-fast-and-clean-collection": ">=1.0",
     "devgeniem/wp-security-collection": ">=1.0",
